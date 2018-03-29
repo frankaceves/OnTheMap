@@ -32,11 +32,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="jN9-C3-3kP">
-                                <rect key="frame" x="0.0" y="244.5" width="375" height="178"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="jN9-C3-3kP">
+                                <rect key="frame" x="0.0" y="217" width="375" height="233"/>
                                 <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-u" translatesAutoresizingMaskIntoConstraints="NO" id="Zc1-he-ptJ">
+                                        <rect key="frame" x="156.5" y="0.0" width="62" height="62"/>
+                                    </imageView>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OUW-wx-NFi">
-                                        <rect key="frame" x="20" y="0.0" width="335" height="40"/>
+                                        <rect key="frame" x="20" y="68" width="335" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="sHG-8K-3D0"/>
                                         </constraints>
@@ -45,29 +48,29 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="h1F-ZY-LBa">
-                                        <rect key="frame" x="20" y="46" width="335" height="40"/>
+                                        <rect key="frame" x="20" y="114" width="335" height="40"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ncz-8y-jvI">
-                                        <rect key="frame" x="20" y="92" width="335" height="40"/>
+                                        <rect key="frame" x="20" y="160" width="335" height="40"/>
                                         <color key="backgroundColor" red="0.20000000000000001" green="0.59999999999999998" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="Log In">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="dfv-ZY-baE">
-                                        <rect key="frame" x="95" y="138" width="185" height="40"/>
+                                        <rect key="frame" x="95" y="206" width="185" height="27"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't Have An Account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qnk-HH-bAO">
-                                                <rect key="frame" x="0.0" y="0.0" width="137" height="40"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="137" height="27"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WtF-xB-0R9">
-                                                <rect key="frame" x="140" y="0.0" width="45" height="40"/>
+                                                <rect key="frame" x="140" y="0.0" width="45" height="27"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <state key="normal" title="Sign Up"/>
                                             </button>
@@ -96,7 +99,10 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ds8-VD-g2V" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="828" y="133.5832083958021"/>
+            <point key="canvasLocation" x="1343" y="33"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="logo-u" width="62" height="62"/>
+    </resources>
 </document>
