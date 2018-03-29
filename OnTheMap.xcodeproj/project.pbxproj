@@ -12,6 +12,7 @@
 		7C58C508206B35CC0086235B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C58C506206B35CC0086235B /* Main.storyboard */; };
 		7C58C50A206B35CC0086235B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C58C509206B35CC0086235B /* Assets.xcassets */; };
 		7C58C50D206B35CC0086235B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C58C50B206B35CC0086235B /* LaunchScreen.storyboard */; };
+		7CA95B20206D3331002FED84 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA95B1F206D3331002FED84 /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		7C58C509206B35CC0086235B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7C58C50C206B35CC0086235B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7C58C50E206B35CC0086235B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7CA95B1F206D3331002FED84 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +56,39 @@
 		7C58C501206B35CC0086235B /* OnTheMap */ = {
 			isa = PBXGroup;
 			children = (
+				7CA95B1C206D32CA002FED84 /* Model */,
+				7CA95B1E206D32E2002FED84 /* View */,
+				7CA95B1D206D32D8002FED84 /* Controller */,
 				7C58C502206B35CC0086235B /* AppDelegate.swift */,
-				7C58C504206B35CC0086235B /* ViewController.swift */,
 				7C58C506206B35CC0086235B /* Main.storyboard */,
 				7C58C509206B35CC0086235B /* Assets.xcassets */,
 				7C58C50B206B35CC0086235B /* LaunchScreen.storyboard */,
 				7C58C50E206B35CC0086235B /* Info.plist */,
 			);
 			path = OnTheMap;
+			sourceTree = "<group>";
+		};
+		7CA95B1C206D32CA002FED84 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7CA95B1D206D32D8002FED84 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7C58C504206B35CC0086235B /* ViewController.swift */,
+				7CA95B1F206D3331002FED84 /* LoginViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		7CA95B1E206D32E2002FED84 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -136,6 +163,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7CA95B20206D3331002FED84 /* LoginViewController.swift in Sources */,
 				7C58C505206B35CC0086235B /* ViewController.swift in Sources */,
 				7C58C503206B35CC0086235B /* AppDelegate.swift in Sources */,
 			);
