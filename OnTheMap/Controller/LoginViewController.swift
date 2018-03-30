@@ -9,7 +9,12 @@
 import UIKit
 
 class LoginViewController: UIViewController {
-
+    // MARK: - PROPERTIES
+    
+    @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var debugTextLabel: UILabel!
+    
+    // MARK: - LIFE CYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,6 +26,9 @@ class LoginViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    // MARK: - ACTIONS
+    //TODO: execute login api function
+    //POST SESSION API METHOD?
 
     /*
     // MARK: - Navigation
