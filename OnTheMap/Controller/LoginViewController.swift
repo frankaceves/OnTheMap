@@ -29,6 +29,23 @@ class LoginViewController: UIViewController {
     // MARK: - ACTIONS
     //TODO: execute login api function
     //POST SESSION API METHOD?
+    // MARK: Authentication (GET) Methods
+    /*
+     Steps for Authentication...
+     https://www.udacity.com/api/session
+     Method Type: POST
+     Required Parameters:
+     udacity - (Dictionary) a dictionary containing a username/password pair used for authentication
+        username - (String) the username (email) for a Udacity student
+        password - (String) the password for a Udacity student
+
+     
+     Step 1: Create a new request token
+     Step 2a: Ask the user for permission via the website
+     Step 3: Create a session ID
+     Bonus Step: Go ahead and get the user id 😄!
+     */
+    
 
     /*
     // MARK: - Navigation
