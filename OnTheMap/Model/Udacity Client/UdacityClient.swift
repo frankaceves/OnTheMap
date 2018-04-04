@@ -56,7 +56,7 @@ class UdacityClient: NSObject {
             
             if let sessionID = sessionInfo["id"] as? String {
             //if data returned contains a session ID, instantiate new view controller
-                print("sessionID: \(sessionID)")
+                
                 completionHandlerForLogin(true, "sessionID: \(sessionID)", nil)
             } else {
                 print("sessionID error")
