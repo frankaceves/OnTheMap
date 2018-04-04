@@ -10,6 +10,7 @@ import UIKit
 
 class UdacityClient: NSObject {
     // MARK: Properties
+    // do we need these Strings?
     var udacityUserName: String!
     var udacityPassword: String!
     // shared session
