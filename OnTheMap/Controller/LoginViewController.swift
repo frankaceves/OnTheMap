@@ -60,7 +60,7 @@ class LoginViewController: UIViewController {
     
     private func completeLogin() {
         
-        let controller = storyboard!.instantiateViewController(withIdentifier: "WelcomeViewController") as UIViewController
+        let controller = storyboard!.instantiateViewController(withIdentifier: "MapNavigationController") as! UINavigationController
         present(controller, animated: true, completion: nil)
     }
     
