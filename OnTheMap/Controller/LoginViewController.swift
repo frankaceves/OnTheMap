@@ -7,12 +7,16 @@
 //
 
 import UIKit
+import Foundation
 
 class LoginViewController: UIViewController {
     // MARK: - PROPERTIES
     
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var debugTextLabel: UILabel!
+    
+    @IBOutlet weak var usernameTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
     
     // MARK: - LIFE CYCLE
     override func viewDidLoad() {
@@ -27,26 +31,36 @@ class LoginViewController: UIViewController {
     }
     
     // MARK: - ACTIONS
-    //TODO: execute login api function
-    //POST SESSION API METHOD?
-    // MARK: Authentication (GET) Methods
-    /*
-     Steps for Authentication...
-     https://www.udacity.com/api/session
-     Method Type: POST
-     Required Parameters:
-     udacity - (Dictionary) a dictionary containing a username/password pair used for authentication
-        username - (String) the username (email) for a Udacity student
-        password - (String) the password for a Udacity student
-
-     
-     Step 1: Create a new request token
-     Step 2a: Ask the user for permission via the website
-     Step 3: Create a session ID
-     Bonus Step: Go ahead and get the user id 😄!
-     */
     
-
+    @IBAction func loginPressed(_ sender: UIButton) {
+        if (usernameTextField.text?.isEmpty)! || (passwordTextField.text?.isEmpty)! {
+            print("error: Missing username or password")
+            return
+            //enable UI
+        } else {
+            //disable UI
+            //execute login request function
+            UdacityClient.sharedInstance().loginRequest(completionHandlerForLogin: { (success, sessionID, error) in
+                if success {
+                    DispatchQueue.main.async {
+                        self.completeLogin()
+                    }
+                } else {
+                    print("error with login request in LoginPressed func, LoginVC.swift")
+                }
+            })
+            //loginRequest should accept the user & pw as arguments to pass into network request url.
+        }
+    }
+    
+    // MARK: Login
+    
+    private func completeLogin() {
+        
+        let controller = storyboard!.instantiateViewController(withIdentifier: "WelcomeViewController") as! UIViewController
+        present(controller, animated: true, completion: nil)
+    }
+    
     /*
     // MARK: - Navigation
 
