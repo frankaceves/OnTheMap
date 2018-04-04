@@ -40,7 +40,10 @@ class LoginViewController: UIViewController {
         } else {
             //disable UI
             //execute login request function
-            UdacityClient.sharedInstance().loginRequest(completionHandlerForLogin: { (success, sessionID, error) in
+            let username = usernameTextField.text!
+            let password = passwordTextField.text!
+            
+            UdacityClient.sharedInstance().loginRequest(username: username, password: password, completionHandlerForLogin: { (success, sessionID, error) in
                 if success {
                     DispatchQueue.main.async {
                         self.completeLogin()
@@ -57,7 +60,7 @@ class LoginViewController: UIViewController {
     
     private func completeLogin() {
         
-        let controller = storyboard!.instantiateViewController(withIdentifier: "WelcomeViewController") as! UIViewController
+        let controller = storyboard!.instantiateViewController(withIdentifier: "WelcomeViewController") as UIViewController
         present(controller, animated: true, completion: nil)
     }
     

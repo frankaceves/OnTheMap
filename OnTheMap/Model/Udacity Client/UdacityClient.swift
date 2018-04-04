@@ -16,7 +16,7 @@ class UdacityClient: NSObject {
     var session = URLSession.shared
     
     //TODO: execute login api function
-    func loginRequest(completionHandlerForLogin: @escaping (_ success: Bool, _ sessionID: String?, _ errorString: String?) -> Void) { //eventually add parameters to take username and password, and add them to request body
+    func loginRequest(username: String, password: String, completionHandlerForLogin: @escaping (_ success: Bool, _ sessionID: String?, _ errorString: String?) -> Void) { //eventually add parameters to take username and password, and add them to request body
         /*
          
          https://www.udacity.com/api/session
@@ -30,7 +30,8 @@ class UdacityClient: NSObject {
             request.httpMethod = "POST"
             request.addValue("application/json", forHTTPHeaderField: "Accept")
             request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-            request.httpBody = "{\"udacity\": {\"username\": \"frankaceves@gmail.com\", \"password\": \"Emb0dydrum5!\"}}".data(using: .utf8)
+            request.httpBody = "{\"udacity\": {\"username\": \"\(username)\", \"password\": \"\(password)\"}}".data(using: .utf8)
+            //request.httpBody = "{\"udacity\": {\"username\": \"frankaceves@gmail.com\", \"password\": \"Emb0dydrum5!\"}}".data(using: .utf8)
         
         
         let session = URLSession.shared
