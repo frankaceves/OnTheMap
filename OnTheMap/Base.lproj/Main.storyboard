@@ -171,10 +171,10 @@
             </objects>
             <point key="canvasLocation" x="3089" y="33"/>
         </scene>
-        <!--Student Table-->
+        <!--Student List-->
         <scene sceneID="Mc2-gL-7nX">
             <objects>
-                <tableViewController title="Student Table" id="MYq-5x-sQH" sceneMemberID="viewController">
+                <tableViewController title="Student Table" id="MYq-5x-sQH" userLabel="Student List" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="v5o-IK-RSQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -194,7 +194,7 @@
                             <outlet property="delegate" destination="MYq-5x-sQH" id="xrQ-fn-i1Z"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Item" id="Itl-P4-gZs" userLabel="List"/>
+                    <tabBarItem key="tabBarItem" title="List" image="icon_listview-deselected" id="Itl-P4-gZs" userLabel="List"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uzp-4k-efr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -202,6 +202,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="icon_listview-deselected" width="75" height="50"/>
         <image name="logo-u" width="62" height="62"/>
     </resources>
 </document>
