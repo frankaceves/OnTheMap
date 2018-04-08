@@ -15,6 +15,7 @@
 		7C7014D120726F3C0082F642 /* UdacityClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7014D020726F3C0082F642 /* UdacityClient.swift */; };
 		7CA95B20206D3331002FED84 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA95B1F206D3331002FED84 /* LoginViewController.swift */; };
 		7CAD5EFB206DD96400A11B46 /* UdacityConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CAD5EFA206DD96400A11B46 /* UdacityConstants.swift */; };
+		7CB7DEC9207ACBE900F42BA3 /* ParseConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB7DEC8207ACBE900F42BA3 /* ParseConstants.swift */; };
 		7CF01B8C2073103400F267B8 /* ParseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF01B8B2073103400F267B8 /* ParseClient.swift */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +30,7 @@
 		7C7014D020726F3C0082F642 /* UdacityClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UdacityClient.swift; sourceTree = "<group>"; };
 		7CA95B1F206D3331002FED84 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		7CAD5EFA206DD96400A11B46 /* UdacityConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UdacityConstants.swift; sourceTree = "<group>"; };
+		7CB7DEC8207ACBE900F42BA3 /* ParseConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseConstants.swift; sourceTree = "<group>"; };
 		7CF01B8B2073103400F267B8 /* ParseClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -103,6 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				7CF01B8B2073103400F267B8 /* ParseClient.swift */,
+				7CB7DEC8207ACBE900F42BA3 /* ParseConstants.swift */,
 			);
 			path = "Parse Client";
 			sourceTree = "<group>";
@@ -194,6 +197,7 @@
 				7C58C505206B35CC0086235B /* WelcomeViewController.swift in Sources */,
 				7C58C503206B35CC0086235B /* AppDelegate.swift in Sources */,
 				7CAD5EFB206DD96400A11B46 /* UdacityConstants.swift in Sources */,
+				7CB7DEC9207ACBE900F42BA3 /* ParseConstants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
