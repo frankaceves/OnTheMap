@@ -9,28 +9,11 @@
 import UIKit
 
 class ParseClient: NSObject {
-
-    struct StudentInformation {
-        let studentFirstName : String?
-        let studentLastName : String?
-        let studentLatitude : Double?
-        let studentlongitude : Double?
-        let locationMapString : String?
-        let studentMediaURL: String?
-        let studentObjectId : String
-        let studentUniqueKey : String
-        
-        init(dictionary: [String:AnyObject]) {
-            studentFirstName = dictionary[ParseClient.JSONResponseKeys.FirstName] as? String
-            studentLastName = dictionary[ParseClient.JSONResponseKeys.LastName] as? String
-            studentLatitude = dictionary[ParseClient.JSONResponseKeys.Latitude] as? Double
-            studentlongitude = dictionary[ParseClient.JSONResponseKeys.Longitude] as? Double
-            locationMapString = dictionary[ParseClient.JSONResponseKeys.MapString] as? String
-            studentMediaURL = dictionary[ParseClient.JSONResponseKeys.URL] as? String
-            studentObjectId = dictionary[ParseClient.JSONResponseKeys.ObjectID] as! String
-            studentUniqueKey = dictionary[ParseClient.JSONResponseKeys.UdacityID] as! String
-        }
-    }
+    var session = URLSession.shared
+    
+    // MARK: Initializers
+    
+    
     
     func getStudentInfo(_ completionHandlerfForGetStudentInfo: @escaping (_ result: [StudentInformation]?, _ error: NSError?) -> Void) {
         //1.  set parameters
@@ -88,6 +71,13 @@ class ParseClient: NSObject {
         
     }
     
+    // MARK: Shared Instance
     
+    class func sharedInstance() -> ParseClient {
+        struct Singleton {
+            static var sharedInstance = ParseClient()
+        }
+        return Singleton.sharedInstance
+    }
     
 }

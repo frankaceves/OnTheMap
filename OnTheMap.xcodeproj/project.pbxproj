@@ -16,6 +16,8 @@
 		7CA95B20206D3331002FED84 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA95B1F206D3331002FED84 /* LoginViewController.swift */; };
 		7CAD5EFB206DD96400A11B46 /* UdacityConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CAD5EFA206DD96400A11B46 /* UdacityConstants.swift */; };
 		7CB7DEC9207ACBE900F42BA3 /* ParseConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB7DEC8207ACBE900F42BA3 /* ParseConstants.swift */; };
+		7CB7DECB207AE32300F42BA3 /* StudentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB7DECA207AE32300F42BA3 /* StudentTableViewController.swift */; };
+		7CB7DECD207AE48700F42BA3 /* StudentInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB7DECC207AE48700F42BA3 /* StudentInformation.swift */; };
 		7CF01B8C2073103400F267B8 /* ParseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF01B8B2073103400F267B8 /* ParseClient.swift */; };
 /* End PBXBuildFile section */
 
@@ -31,6 +33,8 @@
 		7CA95B1F206D3331002FED84 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		7CAD5EFA206DD96400A11B46 /* UdacityConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UdacityConstants.swift; sourceTree = "<group>"; };
 		7CB7DEC8207ACBE900F42BA3 /* ParseConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseConstants.swift; sourceTree = "<group>"; };
+		7CB7DECA207AE32300F42BA3 /* StudentTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentTableViewController.swift; sourceTree = "<group>"; };
+		7CB7DECC207AE48700F42BA3 /* StudentInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentInformation.swift; sourceTree = "<group>"; };
 		7CF01B8B2073103400F267B8 /* ParseClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -90,6 +94,7 @@
 			children = (
 				7C58C504206B35CC0086235B /* WelcomeViewController.swift */,
 				7CA95B1F206D3331002FED84 /* LoginViewController.swift */,
+				7CB7DECA207AE32300F42BA3 /* StudentTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -106,6 +111,7 @@
 			children = (
 				7CF01B8B2073103400F267B8 /* ParseClient.swift */,
 				7CB7DEC8207ACBE900F42BA3 /* ParseConstants.swift */,
+				7CB7DECC207AE48700F42BA3 /* StudentInformation.swift */,
 			);
 			path = "Parse Client";
 			sourceTree = "<group>";
@@ -193,9 +199,11 @@
 			files = (
 				7CF01B8C2073103400F267B8 /* ParseClient.swift in Sources */,
 				7C7014D120726F3C0082F642 /* UdacityClient.swift in Sources */,
+				7CB7DECB207AE32300F42BA3 /* StudentTableViewController.swift in Sources */,
 				7CA95B20206D3331002FED84 /* LoginViewController.swift in Sources */,
 				7C58C505206B35CC0086235B /* WelcomeViewController.swift in Sources */,
 				7C58C503206B35CC0086235B /* AppDelegate.swift in Sources */,
+				7CB7DECD207AE48700F42BA3 /* StudentInformation.swift in Sources */,
 				7CAD5EFB206DD96400A11B46 /* UdacityConstants.swift in Sources */,
 				7CB7DEC9207ACBE900F42BA3 /* ParseConstants.swift in Sources */,
 			);
