@@ -69,8 +69,8 @@ class StudentTableViewController: UITableViewController {
         // Configure the cell...
         
         // NAME / TITLE
-        if let firstName = student.studentFirstName {
-            if let lastName = student.studentLastName {
+        if let firstName = student.studentFirstName, firstName != "" {
+            if let lastName = student.studentLastName, lastName != "" {
                     cell?.textLabel!.text = "\(firstName) \(lastName)"
             } else {
                 cell?.textLabel!.text = firstName
@@ -78,9 +78,10 @@ class StudentTableViewController: UITableViewController {
         } else {
             cell?.textLabel!.text = "Student Name Unknown"
         }
+        //account for "" entered as first & last name
         
         // URL
-        if let url = student.studentMediaURL {
+        if let url = student.studentMediaURL, url != "" {
             cell?.detailTextLabel?.text = url
         } else {
             cell?.detailTextLabel?.text = "No Student URL Provided"
