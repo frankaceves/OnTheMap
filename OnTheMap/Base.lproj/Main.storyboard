@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -130,7 +131,14 @@
         <scene sceneID="fCO-FO-MPV">
             <objects>
                 <tabBarController title="Map Tab Controller" id="M1h-u2-V8I" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="v94-HJ-i2M"/>
+                    <navigationItem key="navigationItem" title="On The Map" id="v94-HJ-i2M">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="TJc-Hx-mMA"/>
+                        <barButtonItem key="leftBarButtonItem" title="LOGOUT" id="pxa-6a-8jc" userLabel="Logout Button"/>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="add" id="ewz-SV-VhI" userLabel="Post Location Button"/>
+                            <barButtonItem systemItem="refresh" id="N1h-xn-rQz" userLabel="Reload Button"/>
+                        </rightBarButtonItems>
+                    </navigationItem>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Tmz-Zx-gIS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -162,14 +170,14 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="kxs-0V-qCg">
-                                            <rect key="frame" x="16" y="5" width="34" height="20"/>
+                                            <rect key="frame" x="16" y="5" width="33.5" height="20.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Uch-nz-a2k">
-                                            <rect key="frame" x="16" y="25" width="44" height="15"/>
+                                            <rect key="frame" x="16" y="25.5" width="44" height="14.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <nil key="textColor"/>
