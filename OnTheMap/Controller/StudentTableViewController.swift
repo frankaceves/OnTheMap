@@ -12,6 +12,9 @@ class StudentTableViewController: UITableViewController {
     // MARK: - PROPERTIES
     var students: [StudentInformation] = [StudentInformation]()
     
+    @IBOutlet var studentTableView: UITableView!
+    
+    
     // MARK: - LIFE CYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +35,11 @@ class StudentTableViewController: UITableViewController {
         super.viewWillAppear(animated)
         ParseClient.sharedInstance().getStudentInfo { (results, error) in
             if let results = results {
-                print(results)
+                self.students = results
+                print("success loading student info")
+                DispatchQueue.main.async {
+                    self.studentTableView.reloadData()
+                }
             } else {
                 print(error)
             }
@@ -42,25 +49,33 @@ class StudentTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
+//    override func numberOfSections(in tableView: UITableView) -> Int {
+//        // #warning Incomplete implementation, return the number of sections
+//
+//        return 0
+//    }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return students.count
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
+        let cellReuseIdentifier = "studentCell"
+        let student = students[(indexPath as NSIndexPath).row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier) as UITableViewCell!
+        
         // Configure the cell...
-
-        return cell
+        if let firstName = student.studentFirstName {
+            cell?.textLabel!.text = firstName
+        } else {
+            cell?.textLabel!.text = "no first name"
+        }
+        
+        return cell!
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.

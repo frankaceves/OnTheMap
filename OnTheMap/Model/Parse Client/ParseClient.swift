@@ -53,13 +53,13 @@ class ParseClient: NSObject {
                 return
             }
             
-            print(parsedResults)
-//            if let results = parsedResults["results"] as? [[String:AnyObject]] {
-//                let students = studentsFromResults(results)
-//                completionHandlerfForGetStudentInfo(students, nil)
-//            } else {
-//                completionHandlerfForGetStudentInfo(nil, NSError(domain: "student location", code: 0, userInfo: [NSLocalizedDescriptionKey:"could not parse student info into dictionary"]))
-//            }
+            //print(parsedResults)
+            if let results = parsedResults["results"] as? [[String:AnyObject]] {
+                let students = StudentInformation.studentsFromResults(results)
+                completionHandlerfForGetStudentInfo(students, nil)
+            } else {
+                completionHandlerfForGetStudentInfo(nil, NSError(domain: "student location", code: 0, userInfo: [NSLocalizedDescriptionKey:"could not parse student info into dictionary"]))
+            }
             
             
             

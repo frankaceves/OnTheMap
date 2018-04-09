@@ -28,4 +28,17 @@ struct StudentInformation {
         studentObjectId = dictionary[ParseClient.JSONResponseKeys.ObjectID] as! String
         studentUniqueKey = dictionary[ParseClient.JSONResponseKeys.UdacityID] as! String
     }
+    
+    // - MARK: METHODS
+    static func studentsFromResults(_ results: [[String:AnyObject]]) -> [StudentInformation] {
+        
+        var students = [StudentInformation]()
+        
+        // iterate through array of dictionaries, each student is a dictionary
+        for result in results {
+            students.append(StudentInformation(dictionary: result))
+        }
+        
+        return students
+    }
 }
