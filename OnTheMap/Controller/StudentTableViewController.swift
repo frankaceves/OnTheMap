@@ -67,10 +67,23 @@ class StudentTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier) as UITableViewCell!
         
         // Configure the cell...
+        
+        // NAME / TITLE
         if let firstName = student.studentFirstName {
-            cell?.textLabel!.text = firstName
+            if let lastName = student.studentLastName {
+                    cell?.textLabel!.text = "\(firstName) \(lastName)"
+            } else {
+                cell?.textLabel!.text = firstName
+            }
         } else {
-            cell?.textLabel!.text = "no first name"
+            cell?.textLabel!.text = "Student Name Unknown"
+        }
+        
+        // URL
+        if let url = student.studentMediaURL {
+            cell?.detailTextLabel?.text = url
+        } else {
+            cell?.detailTextLabel?.text = "No Student URL Provided"
         }
         
         return cell!
