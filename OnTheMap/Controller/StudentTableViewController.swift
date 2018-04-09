@@ -36,7 +36,7 @@ class StudentTableViewController: UITableViewController {
         ParseClient.sharedInstance().getStudentInfo { (results, error) in
             if let results = results {
                 self.students = results
-                print("success loading student info")
+
                 DispatchQueue.main.async {
                     self.studentTableView.reloadData()
                 }
