@@ -95,7 +95,20 @@ class StudentTableViewController: UITableViewController {
         return cell!
     }
     
-
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let student = students[(indexPath as NSIndexPath).row]
+        if let studentURLstring = student.studentMediaURL, let studentURL = URL(string: studentURLstring) {
+            if UIApplication.shared.canOpenURL(studentURL) {
+            print("studentURLstring: \(studentURLstring) \nstudentURL: \(studentURL)")
+                UIApplication.shared.open(studentURL, options: [:]) { (success) in
+                    print("success")
+                }
+            } else {
+                print("this url is not valid")
+            }
+        }
+        
+    }
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
