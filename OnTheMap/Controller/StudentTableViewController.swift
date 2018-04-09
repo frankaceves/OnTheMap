@@ -59,7 +59,10 @@ class StudentTableViewController: UITableViewController {
         // #warning Incomplete implementation, return the number of rows
         return students.count
     }
-
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let cellHeight: CGFloat = 50
+        return cellHeight
+    }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellReuseIdentifier = "studentCell"
@@ -67,6 +70,8 @@ class StudentTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier) as UITableViewCell!
         
         // Configure the cell...
+        // PIN IMAGE
+        cell?.imageView?.image = #imageLiteral(resourceName: "icon_pin")
         
         // NAME / TITLE
         if let firstName = student.studentFirstName, firstName != "" {
