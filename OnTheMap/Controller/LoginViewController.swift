@@ -32,6 +32,13 @@ class LoginViewController: UIViewController {
     
     // MARK: - ACTIONS
     
+    @IBAction func signUpPressed(_ sender: Any) {
+        let url = URL(string: "https://www.udacity.com/account/auth#!/signup")!
+        UIApplication.shared.open(url, options: [:]) { (success) in
+            //
+        }
+    }
+    
     @IBAction func loginPressed(_ sender: UIButton) {
         self.completeLogin() // REMOVE when ready to ship.
         // MARK - UNCOMMENT TO ENABLE LOGIN REQUEST

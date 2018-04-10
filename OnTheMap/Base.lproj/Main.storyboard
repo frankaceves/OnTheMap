@@ -67,6 +67,9 @@
                                                 </accessibility>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <state key="normal" title="Sign Up"/>
+                                                <connections>
+                                                    <action selector="signUpPressed:" destination="sLB-93-dPV" eventType="touchUpInside" id="Lg3-mh-pZ8"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
