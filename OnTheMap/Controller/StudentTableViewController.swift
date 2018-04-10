@@ -51,10 +51,20 @@ class StudentTableViewController: UITableViewController {
         
         // create and set the logout button
         parent!.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "LOGOUT", style: .plain, target: self, action: #selector(logout))
+        
+        // create and set the reload button
+        //parent!.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "RELOAD", style: .plain, target: self, action: #selector(reloadStudentInfo))
+        parent!.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(reloadStudentInfo))
+        
+
+    }
+    
+    @objc func reloadStudentInfo() {
+        //print("reload pressed")
+        self.studentTableView.reloadData()
     }
     
     @objc func logout() {
-        print("logout function should be executed here")
         UdacityClient.sharedInstance().logoutRequest { (success, error) in
             if error != nil {
                 print("logout error")
