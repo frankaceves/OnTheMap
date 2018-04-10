@@ -117,9 +117,7 @@ class StudentTableViewController: UITableViewController {
         let student = students[(indexPath as NSIndexPath).row]
         if let studentURLstring = student.studentMediaURL, let studentURL = URL(string: studentURLstring) {
             if UIApplication.shared.canOpenURL(studentURL) {
-            
                 UIApplication.shared.open(studentURL, options: [:]) { (success) in
-                    print("success")
                 }
             } else {
                 print("this url is not valid")
