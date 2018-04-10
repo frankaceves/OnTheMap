@@ -46,6 +46,24 @@ class StudentTableViewController: UITableViewController {
         }
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        // create and set the logout button
+        parent!.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "LOGOUT", style: .plain, target: self, action: #selector(logout))
+    }
+    
+    @objc func logout() {
+        print("logout function should be executed here")
+        UdacityClient.sharedInstance().logoutRequest { (success, error) in
+            if error != nil {
+                print("logout error")
+            } else {
+                self.dismiss(animated: true, completion: nil)
+            }
+        }
+    }
+    
 
     // MARK: - Table view data source
 

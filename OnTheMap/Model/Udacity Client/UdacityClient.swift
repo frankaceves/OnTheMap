@@ -68,8 +68,34 @@ class UdacityClient: NSObject {
         task.resume()
     }
     
+    //TODO: execute logout api function
     
-    
+    func logoutRequest(completionHandlerForLogout: @escaping (_ success: Bool, _ error: String?) -> Void) {
+        var request = URLRequest(url: URL(string: "https://www.udacity.com/api/session")!)
+        request.httpMethod = "DELETE"
+        var xsrfCookie: HTTPCookie? = nil
+        let sharedCookieStorage = HTTPCookieStorage.shared
+        for cookie in sharedCookieStorage.cookies! {
+        if cookie.name == "XSRF-TOKEN" { xsrfCookie = cookie }
+        }
+        if let xsrfCookie = xsrfCookie {
+            request.setValue(xsrfCookie.value, forHTTPHeaderField: "X-XSRF-TOKEN")
+        }
+        let session = URLSession.shared
+        let task = session.dataTask(with: request) { data, response, error in
+            if error != nil { // Handle error…
+                return
+            }
+            let range = Range(5..<data!.count)
+            if let newData = data?.subdata(in: range) { /* subset response data! */
+                completionHandlerForLogout(true, nil)
+            } else {
+                completionHandlerForLogout(false, "error in logoutRequest data retrieval: Udacity Client function")
+            }
+            //print(String(data: newData!, encoding: .utf8)!)
+        }
+        task.resume()
+    }
     
     
     // MARK: Shared Instance

@@ -7,7 +7,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
-        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -131,14 +130,7 @@
         <scene sceneID="fCO-FO-MPV">
             <objects>
                 <tabBarController title="Map Tab Controller" id="M1h-u2-V8I" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" title="On The Map" id="v94-HJ-i2M">
-                        <barButtonItem key="backBarButtonItem" title="Back" id="TJc-Hx-mMA"/>
-                        <barButtonItem key="leftBarButtonItem" title="LOGOUT" id="pxa-6a-8jc" userLabel="Logout Button"/>
-                        <rightBarButtonItems>
-                            <barButtonItem systemItem="add" id="ewz-SV-VhI" userLabel="Post Location Button"/>
-                            <barButtonItem systemItem="refresh" id="N1h-xn-rQz" userLabel="Reload Button"/>
-                        </rightBarButtonItems>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="On The Map" id="v94-HJ-i2M"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Tmz-Zx-gIS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -193,6 +185,8 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="List" image="icon_listview-deselected" id="Itl-P4-gZs" userLabel="List"/>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="studentTableView" destination="v5o-IK-RSQ" id="ha8-xS-sy9"/>
                     </connections>

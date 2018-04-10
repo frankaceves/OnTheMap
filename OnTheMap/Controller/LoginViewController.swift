@@ -33,27 +33,29 @@ class LoginViewController: UIViewController {
     // MARK: - ACTIONS
     
     @IBAction func loginPressed(_ sender: UIButton) {
-        if (usernameTextField.text?.isEmpty)! || (passwordTextField.text?.isEmpty)! {
-            print("error: Missing username or password")
-            return
-            //enable UI
-        } else {
-            //disable UI
-            //execute login request function
-            let username = usernameTextField.text!
-            let password = passwordTextField.text!
-            
-            UdacityClient.sharedInstance().loginRequest(username: username, password: password, completionHandlerForLogin: { (success, sessionID, error) in
-                if success {
-                    DispatchQueue.main.async {
-                        self.completeLogin()
-                    }
-                } else {
-                    print("error with login request in LoginPressed func, LoginVC.swift")
-                }
-            })
-            //loginRequest should accept the user & pw as arguments to pass into network request url.
-        }
+        self.completeLogin() // REMOVE when ready to ship.
+        // MARK - UNCOMMENT TO ENABLE LOGIN REQUEST
+//        if (usernameTextField.text?.isEmpty)! || (passwordTextField.text?.isEmpty)! {
+//            print("error: Missing username or password")
+//            return
+//            //enable UI
+//        } else {
+//            //disable UI
+//            //execute login request function
+//            let username = usernameTextField.text!
+//            let password = passwordTextField.text!
+//
+//            UdacityClient.sharedInstance().loginRequest(username: username, password: password, completionHandlerForLogin: { (success, sessionID, error) in
+//                if success {
+//                    DispatchQueue.main.async {
+//                        self.completeLogin()
+//                    }
+//                } else {
+//                    print("error with login request in LoginPressed func, LoginVC.swift")
+//                }
+//            })
+//
+//        }
     }
     
     // MARK: Login
