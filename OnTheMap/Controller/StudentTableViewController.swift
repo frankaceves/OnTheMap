@@ -62,7 +62,7 @@ class StudentTableViewController: UITableViewController {
     }
     
     @objc func reloadStudentInfo() {
-        //print("reload pressed")
+        print("reload pressed in student table")
         self.studentTableView.reloadData()
     }
     
