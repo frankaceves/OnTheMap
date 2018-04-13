@@ -7,18 +7,77 @@
 //
 
 import UIKit
+import MapKit
 
-class StudentMapViewController: UIViewController {
+class StudentMapViewController: UIViewController, MKMapViewDelegate {
     // - MARK: PROPERTIES
     //TODO: set up mapview property (to reload when reload button is pressed).
     
+    @IBOutlet weak var mapView: MKMapView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         print("student map loaded")
         // Do any additional setup after loading the view.
-    }
+        //let locations = StudentInformation
+        
+        ParseClient.sharedInstance().getStudentInfo { (results, error) in
+            if let locations = results {
+                var annotations = [MKPointAnnotation]()
+                
+                for dictionary in locations {
+                    
+                    let lat = CLLocationDegrees(dictionary.studentLatitude as! Double)
+                    let long = CLLocationDegrees(dictionary.studentlongitude as! Double)
+                    
+                    let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
+                    
+                    let first = dictionary.studentFirstName as! String
+                    let last = dictionary.studentLastName as! String
+                    let mediaURL = dictionary.studentMediaURL as! String
+                    
+                    
+                    let annotation = MKPointAnnotation()
+                    annotation.coordinate = coordinate
+                    annotation.title = "\(first) \(last)"
+                    annotation.subtitle = mediaURL
+                    
+                    annotations.append(annotation)
+                }
+                
+                DispatchQueue.main.async {
+                    self.mapView.addAnnotations(annotations)
+                }
+                
+                
 
+            } else {
+                print(error)
+            }
+        }
+        
+    }
+    
+    // MARK: - MKMapViewDelegate
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        
+        let reuseID = "pin"
+        
+        var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseID) as? MKPinAnnotationView
+        
+        if pinView == nil {
+            pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseID)
+            pinView!.canShowCallout = true
+            pinView!.pinTintColor = UIColor.red
+            pinView!.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+            
+        } else {
+            pinView!.annotation = annotation
+        }
+        
+        return pinView
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -54,7 +113,20 @@ class StudentMapViewController: UIViewController {
             }
         }
     }
-
+    
+    
+    
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        if control == view.rightCalloutAccessoryView {
+            let app = UIApplication.shared
+            if let toOpen = view.annotation?.subtitle! {
+                //app.openURL(URL(string: toOpen)!)
+                let url = URL(string: toOpen)!
+                app.open(url, options: [:], completionHandler: nil)
+            }
+        }
+    }
+    
     /*
     // MARK: - Navigation
 
