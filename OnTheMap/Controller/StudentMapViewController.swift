@@ -27,7 +27,7 @@ class StudentMapViewController: UIViewController, MKMapViewDelegate {
                 
                 for dictionary in locations {
                     
-                    let lat = CLLocationDegrees(dictionary.studentLatitude as! Double)
+                    let lat = CLLocationDegrees(dictionary.studentLatitude!)
                     let long = CLLocationDegrees(dictionary.studentlongitude as! Double)
                     
                     let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
@@ -52,7 +52,7 @@ class StudentMapViewController: UIViewController, MKMapViewDelegate {
                 
 
             } else {
-                print(error)
+                print(error!)
             }
         }
         

@@ -87,7 +87,7 @@ class UdacityClient: NSObject {
                 return
             }
             let range = Range(5..<data!.count)
-            if let newData = data?.subdata(in: range) { /* subset response data! */
+            if let _ = data?.subdata(in: range) { /* subset response data! */
                 completionHandlerForLogout(true, nil)
             } else {
                 completionHandlerForLogout(false, "error in logoutRequest data retrieval: Udacity Client function")

@@ -41,7 +41,7 @@ class StudentTableViewController: UITableViewController {
                     self.studentTableView.reloadData()
                 }
             } else {
-                print(error)
+                print(error!)
             }
         }
     }
