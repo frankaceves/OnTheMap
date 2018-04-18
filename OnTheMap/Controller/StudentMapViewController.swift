@@ -28,13 +28,13 @@ class StudentMapViewController: UIViewController, MKMapViewDelegate {
                 for dictionary in locations {
                     
                     let lat = CLLocationDegrees(dictionary.studentLatitude!)
-                    let long = CLLocationDegrees(dictionary.studentlongitude as! Double)
+                    let long = CLLocationDegrees(dictionary.studentlongitude!)
                     
                     let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
                     
-                    let first = dictionary.studentFirstName as! String
-                    let last = dictionary.studentLastName as! String
-                    let mediaURL = dictionary.studentMediaURL as! String
+                    let first = dictionary.studentFirstName!
+                    let last = dictionary.studentLastName!
+                    let mediaURL = dictionary.studentMediaURL!
                     
                     
                     let annotation = MKPointAnnotation()
