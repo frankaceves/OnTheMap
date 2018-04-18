@@ -250,14 +250,14 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="wAt-vc-HuA">
-                                <rect key="frame" x="20" y="64" width="335" height="303"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="wAt-vc-HuA">
+                                <rect key="frame" x="30" y="64" width="315" height="303"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Q3E-d1-WoX">
-                                        <rect key="frame" x="0.0" y="0.0" width="335" height="183"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_world" translatesAutoresizingMaskIntoConstraints="NO" id="Q3E-d1-WoX">
+                                        <rect key="frame" x="0.0" y="0.0" width="315" height="159"/>
                                     </imageView>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sQ4-OK-w89" userLabel="Location Text Field">
-                                        <rect key="frame" x="0.0" y="183" width="335" height="40"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Your Location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sQ4-OK-w89" userLabel="Location Text Field">
+                                        <rect key="frame" x="0.0" y="167" width="315" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="0Ki-CR-efO"/>
                                         </constraints>
@@ -265,14 +265,14 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1Vd-lw-uxd" userLabel="URL Text Field">
-                                        <rect key="frame" x="0.0" y="223" width="335" height="40"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your URL (&quot;https://...&quot;)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1Vd-lw-uxd" userLabel="URL Text Field">
+                                        <rect key="frame" x="0.0" y="215" width="315" height="40"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="252" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7eE-1k-zHq" userLabel="Find Location Button">
-                                        <rect key="frame" x="0.0" y="263" width="335" height="40"/>
+                                        <rect key="frame" x="0.0" y="263" width="315" height="40"/>
                                         <color key="backgroundColor" red="0.20000000000000001" green="0.59999999999999998" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="Find Location">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -288,9 +288,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="FN5-Ml-AxQ" firstAttribute="bottom" secondItem="wAt-vc-HuA" secondAttribute="bottom" constant="300" id="B9M-ld-LCO"/>
-                            <constraint firstItem="FN5-Ml-AxQ" firstAttribute="trailing" secondItem="wAt-vc-HuA" secondAttribute="trailing" constant="20" id="E7s-zE-UtD"/>
+                            <constraint firstItem="FN5-Ml-AxQ" firstAttribute="trailing" secondItem="wAt-vc-HuA" secondAttribute="trailing" constant="30" id="E7s-zE-UtD"/>
                             <constraint firstItem="hl4-sf-u1K" firstAttribute="trailing" secondItem="FN5-Ml-AxQ" secondAttribute="trailing" id="SZd-Bh-AQy"/>
-                            <constraint firstItem="wAt-vc-HuA" firstAttribute="leading" secondItem="FN5-Ml-AxQ" secondAttribute="leading" constant="20" id="Tjk-Wx-CZ9"/>
+                            <constraint firstItem="wAt-vc-HuA" firstAttribute="leading" secondItem="FN5-Ml-AxQ" secondAttribute="leading" constant="30" id="Tjk-Wx-CZ9"/>
                             <constraint firstItem="wAt-vc-HuA" firstAttribute="top" secondItem="hl4-sf-u1K" secondAttribute="bottom" id="TnI-hV-zIS"/>
                             <constraint firstItem="hl4-sf-u1K" firstAttribute="leading" secondItem="FN5-Ml-AxQ" secondAttribute="leading" id="hBr-9d-mCF"/>
                             <constraint firstItem="hl4-sf-u1K" firstAttribute="top" secondItem="FN5-Ml-AxQ" secondAttribute="top" id="i57-zZ-ovH"/>
@@ -306,6 +306,7 @@
     <resources>
         <image name="icon_listview-deselected" width="75" height="50"/>
         <image name="icon_mapview-deselected" width="75" height="50"/>
+        <image name="icon_world" width="52" height="67"/>
         <image name="logo-u" width="62" height="62"/>
     </resources>
 </document>
