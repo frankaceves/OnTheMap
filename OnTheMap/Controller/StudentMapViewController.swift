@@ -94,7 +94,7 @@ class StudentMapViewController: UIViewController, MKMapViewDelegate {
         //        parent!.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(reloadStudentInfo))
         let reloadButton = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(reloadStudentInfo))
         
-        let postButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(reloadStudentInfo))
+        let postButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(postLocation))
         parent!.navigationItem.rightBarButtonItems = [reloadButton, postButton]
     }
     
@@ -112,6 +112,11 @@ class StudentMapViewController: UIViewController, MKMapViewDelegate {
                 self.dismiss(animated: true, completion: nil)
             }
         }
+    }
+    
+    @objc private func postLocation() {
+        let controller = storyboard!.instantiateViewController(withIdentifier: "PostLocationViewController") as UIViewController
+        present(controller, animated: true, completion: nil)
     }
     
     
