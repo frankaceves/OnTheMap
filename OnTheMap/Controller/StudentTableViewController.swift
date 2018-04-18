@@ -57,7 +57,7 @@ class StudentTableViewController: UITableViewController {
 //        parent!.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(reloadStudentInfo))
         let reloadButton = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(reloadStudentInfo))
         
-        let postButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(reloadStudentInfo))
+        let postButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(postLocation))
         parent!.navigationItem.rightBarButtonItems = [reloadButton, postButton]
     }
     
@@ -76,6 +76,10 @@ class StudentTableViewController: UITableViewController {
                 self.dismiss(animated: true, completion: nil)
             }
         }
+    }
+    
+    @objc func postLocation() {
+        //let vc = controller.
     }
     
 

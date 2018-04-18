@@ -237,7 +237,7 @@
         <!--Information Posting View Controller-->
         <scene sceneID="eus-Yl-pPd">
             <objects>
-                <viewController title="Add Location" id="Xaq-gI-6yG" userLabel="Information Posting View Controller" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PostLocationViewController" title="Add Location" id="Xaq-gI-6yG" userLabel="Information Posting View Controller" customClass="PostLocationViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PCF-xd-Lzu">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
