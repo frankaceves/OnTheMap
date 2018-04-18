@@ -68,7 +68,7 @@ class StudentTableViewController: UITableViewController {
         }
     }
     
-    @objc func logout() {
+    @objc private func logout() {
         UdacityClient.sharedInstance().logoutRequest { (success, error) in
             if error != nil {
                 print("logout error")
@@ -78,8 +78,9 @@ class StudentTableViewController: UITableViewController {
         }
     }
     
-    @objc func postLocation() {
-        //let vc = controller.
+    @objc private func postLocation() {
+        let controller = storyboard!.instantiateViewController(withIdentifier: "PostLocationViewController") as UIViewController
+        present(controller, animated: true, completion: nil)
     }
     
 

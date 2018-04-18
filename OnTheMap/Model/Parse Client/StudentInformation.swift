@@ -51,7 +51,12 @@ struct StudentInformation {
         for result in results {
             //print(result)
             // IF LET RESULT CONTAINS NIL, RETURN?
-            students.append(StudentInformation(dictionary: result)!)
+            if let result = StudentInformation(dictionary: result) {
+                students.append(result)
+            } else {
+                print("student info contains nil: \(result)")
+            }
+            //students.append(StudentInformation(dictionary: result)!)
             //print("list of students: \(students)")
         }
         //print("list of students: \(students)")
