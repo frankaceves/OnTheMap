@@ -97,7 +97,7 @@ class StudentMapViewController: UIViewController, MKMapViewDelegate {
 //        parent!.navigationItem.rightBarButtonItems = [reloadButton, postButton]
     }
     
-    @objc func reloadStudentInfo() {
+    @IBAction func reloadStudentInfo() {
         print("reload pressed in student Map")
         // reload map view
         
@@ -113,7 +113,7 @@ class StudentMapViewController: UIViewController, MKMapViewDelegate {
         }
     }
     
-    @objc private func postLocation() {
+    @IBAction private func postLocation() {
         let controller = storyboard!.instantiateViewController(withIdentifier: "PostLocationViewController") as UIViewController
         present(controller, animated: true, completion: nil)
     }

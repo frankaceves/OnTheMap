@@ -61,14 +61,14 @@ class StudentTableViewController: UITableViewController {
 //        parent!.navigationItem.rightBarButtonItems = [reloadButton, postButton]
     }
     
-    @objc func reloadStudentInfo() {
+    @IBAction func reloadStudentInfo() {
         print("reload pressed in student table")
         DispatchQueue.main.async {
             self.studentTableView.reloadData()
         }
     }
     
-    @objc private func logout() {
+    @IBAction private func logout() {
         UdacityClient.sharedInstance().logoutRequest { (success, error) in
             if error != nil {
                 print("logout error")
@@ -78,7 +78,7 @@ class StudentTableViewController: UITableViewController {
         }
     }
     
-    @objc private func postLocation() {
+    @IBAction private func postLocation() {
         let controller = storyboard!.instantiateViewController(withIdentifier: "PostLocationViewController") as UIViewController
         present(controller, animated: true, completion: nil)
     }

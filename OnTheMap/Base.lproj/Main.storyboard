@@ -195,10 +195,22 @@
                     <tabBarItem key="tabBarItem" title="List" image="icon_listview-deselected" id="Itl-P4-gZs" userLabel="List"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="On The Map" id="tI6-eZ-JZg">
-                        <barButtonItem key="leftBarButtonItem" title="LOGOUT" id="fak-jA-K8x"/>
+                        <barButtonItem key="leftBarButtonItem" title="LOGOUT" id="fak-jA-K8x">
+                            <connections>
+                                <action selector="logout" destination="MYq-5x-sQH" id="4wd-K7-nnB"/>
+                            </connections>
+                        </barButtonItem>
                         <rightBarButtonItems>
-                            <barButtonItem systemItem="add" id="8qK-tr-Aik"/>
-                            <barButtonItem systemItem="refresh" id="z6g-T7-ydX"/>
+                            <barButtonItem systemItem="add" id="8qK-tr-Aik">
+                                <connections>
+                                    <action selector="postLocation" destination="MYq-5x-sQH" id="Uui-yt-ygq"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="refresh" id="z6g-T7-ydX">
+                                <connections>
+                                    <action selector="reloadStudentInfo" destination="MYq-5x-sQH" id="4BP-yY-c2A"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
@@ -236,10 +248,22 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Map" image="icon_mapview-deselected" id="fD7-rV-30l"/>
                     <navigationItem key="navigationItem" title="On The Map" id="lgo-yF-zfM">
-                        <barButtonItem key="leftBarButtonItem" title="LOGOUT" id="WBZ-5B-VU0"/>
+                        <barButtonItem key="leftBarButtonItem" title="LOGOUT" id="WBZ-5B-VU0">
+                            <connections>
+                                <action selector="logout" destination="hsB-mP-MlO" id="aha-iW-XzH"/>
+                            </connections>
+                        </barButtonItem>
                         <rightBarButtonItems>
-                            <barButtonItem systemItem="add" id="cn0-Qb-mPG"/>
-                            <barButtonItem systemItem="refresh" id="BFq-Kq-3VB"/>
+                            <barButtonItem systemItem="add" id="cn0-Qb-mPG">
+                                <connections>
+                                    <action selector="postLocation" destination="hsB-mP-MlO" id="NB6-tQ-kNU"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="refresh" id="BFq-Kq-3VB">
+                                <connections>
+                                    <action selector="reloadStudentInfo" destination="hsB-mP-MlO" id="H3c-5r-xBc"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
