@@ -19,8 +19,11 @@ class StudentMapViewController: UIViewController, MKMapViewDelegate {
         super.viewDidLoad()
         print("student map loaded")
         // Do any additional setup after loading the view.
-        //let locations = StudentInformation
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         ParseClient.sharedInstance().getStudentInfo { (results, error) in
             if let locations = results {
                 var annotations = [MKPointAnnotation]()
@@ -50,12 +53,11 @@ class StudentMapViewController: UIViewController, MKMapViewDelegate {
                 }
                 
                 
-
+                
             } else {
                 print(error!)
             }
         }
-        
     }
     
     // MARK: - MKMapViewDelegate
