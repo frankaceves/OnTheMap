@@ -9,7 +9,10 @@
 import UIKit
 
 class PostLocationViewController: UIViewController {
-
+    // MARK: - PROPERTIES
+    
+    
+    // MARK: - LIFE CYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -25,6 +28,11 @@ class PostLocationViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func findLocation(_ sender: UIButton) {
+        //get mapString
+        //geocode into lat/long
+        //present another map view?
+    }
     /*
     // MARK: - Navigation
 

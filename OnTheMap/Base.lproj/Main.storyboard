@@ -22,7 +22,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="jN9-C3-3kP">
-                                <rect key="frame" x="0.0" y="121" width="375" height="426"/>
+                                <rect key="frame" x="0.0" y="120.5" width="375" height="426"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-u" translatesAutoresizingMaskIntoConstraints="NO" id="Zc1-he-ptJ">
                                         <rect key="frame" x="156.5" y="0.0" width="62" height="62"/>
@@ -230,8 +230,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="5Rx-ah-1HU">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="5Rx-ah-1HU">
+                                <rect key="frame" x="0.0" y="32" width="375" height="343"/>
                                 <connections>
                                     <outlet property="delegate" destination="hsB-mP-MlO" id="Rsz-2Y-V2r"/>
                                 </connections>
@@ -321,6 +321,9 @@
                                         <state key="normal" title="Find Location">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="findLocation:" destination="Xaq-gI-6yG" eventType="touchUpInside" id="z7W-WB-ULv"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
