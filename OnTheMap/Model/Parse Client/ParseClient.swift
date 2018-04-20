@@ -71,6 +71,16 @@ class ParseClient: NSObject {
         
     }
     
+    // UPDATE STUDENT INFO
+    func updateStudentInfo(_ completionHandlerfForUpdateStudentInfo: @escaping (_ success: Bool, _ error: NSError?) -> Void) {
+    
+        
+        
+        
+        // if results = parsedResults["updatedAt"] as string, completion (true, nil)
+        // if no results, completion (false, error)
+    }
+    
     // MARK: Shared Instance
     
     class func sharedInstance() -> ParseClient {
