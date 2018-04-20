@@ -19,7 +19,7 @@ class ParseClient: NSObject {
         //1.  set parameters
         //2.  create url
         //3.  configure request
-        var request1 = URLRequest(url: URL(string: "https://parse.udacity.com/parse/classes/StudentLocation")!)
+        var request1 = URLRequest(url: URL(string: "https://parse.udacity.com/parse/classes/StudentLocation?order=-updatedAt")!)
         request1.addValue("QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr", forHTTPHeaderField: "X-Parse-Application-Id")
         request1.addValue("QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY", forHTTPHeaderField: "X-Parse-REST-API-Key")
         let session1 = URLSession.shared
