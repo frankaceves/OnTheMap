@@ -17,7 +17,7 @@ class StudentMapViewController: UIViewController, MKMapViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("student map loaded")
+        //print("student map loaded")
         // Do any additional setup after loading the view.
         
     }
@@ -100,7 +100,7 @@ class StudentMapViewController: UIViewController, MKMapViewDelegate {
     }
     
     @IBAction func reloadStudentInfo() {
-        print("reload pressed in student Map")
+        //print("reload pressed in student Map")
         // reload map view
         
     }
