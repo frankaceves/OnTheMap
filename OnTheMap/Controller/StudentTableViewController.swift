@@ -62,7 +62,7 @@ class StudentTableViewController: UITableViewController {
     }
     
     @IBAction func reloadStudentInfo() {
-        print("reload pressed in student table")
+        //print("reload pressed in student table")
         DispatchQueue.main.async {
             self.studentTableView.reloadData()
         }
