@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		28D21A75208C1B4D00D3799E /* PostConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D21A74208C1B4D00D3799E /* PostConfirmationViewController.swift */; };
 		28F6B13D207DC7AB007716BC /* StudentMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F6B13C207DC7AB007716BC /* StudentMapViewController.swift */; };
 		7C28263F20878AA7004E37A7 /* PostLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C28263E20878AA7004E37A7 /* PostLocationViewController.swift */; };
 		7C58C503206B35CC0086235B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C58C502206B35CC0086235B /* AppDelegate.swift */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		28D21A74208C1B4D00D3799E /* PostConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostConfirmationViewController.swift; sourceTree = "<group>"; };
 		28F6B13C207DC7AB007716BC /* StudentMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentMapViewController.swift; sourceTree = "<group>"; };
 		7C28263E20878AA7004E37A7 /* PostLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostLocationViewController.swift; sourceTree = "<group>"; };
 		7C58C4FF206B35CC0086235B /* OnTheMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnTheMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -101,6 +103,7 @@
 				7CB7DECA207AE32300F42BA3 /* StudentTableViewController.swift */,
 				28F6B13C207DC7AB007716BC /* StudentMapViewController.swift */,
 				7C28263E20878AA7004E37A7 /* PostLocationViewController.swift */,
+				28D21A74208C1B4D00D3799E /* PostConfirmationViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -204,6 +207,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7CF01B8C2073103400F267B8 /* ParseClient.swift in Sources */,
+				28D21A75208C1B4D00D3799E /* PostConfirmationViewController.swift in Sources */,
 				7C7014D120726F3C0082F642 /* UdacityClient.swift in Sources */,
 				7CB7DECB207AE32300F42BA3 /* StudentTableViewController.swift in Sources */,
 				7CA95B20206D3331002FED84 /* LoginViewController.swift in Sources */,
