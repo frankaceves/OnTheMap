@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 class ParseClient: NSObject {
     var session = URLSession.shared

@@ -11,6 +11,8 @@ import UIKit
 class PostLocationViewController: UIViewController {
     // MARK: - PROPERTIES
     
+    @IBOutlet weak var locationStringTextField: UITextField!
+    @IBOutlet weak var urlTextField: UITextField!
     
     // MARK: - LIFE CYCLE
     override func viewDidLoad() {
@@ -29,9 +31,21 @@ class PostLocationViewController: UIViewController {
     }
     
     @IBAction func findLocation(_ sender: UIButton) {
-        //get mapString
-        //geocode into lat/long
-        //present another map view?
+        //disable UI
+        
+        
+        
+        if locationStringTextField.text!.isEmpty || urlTextField.text!.isEmpty {
+            print("location and url are required!")
+            //enable UI
+        } else {
+            print(locationStringTextField.text!, urlTextField.text!)
+            print("next step: execute geocode, then parse POST method")
+            //call parse function
+                //get mapString
+                //geocode into lat/long
+                //present another map view?
+        }
     }
     /*
     // MARK: - Navigation
