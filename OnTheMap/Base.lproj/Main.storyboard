@@ -373,7 +373,7 @@
         <!--Confirm Location View Controller-->
         <scene sceneID="60u-O7-Gfm">
             <objects>
-                <viewController storyboardIdentifier="PostLocationViewController" title="Add Location" id="0df-n0-5iP" userLabel="Confirm Location View Controller" customClass="PostLocationViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PostConfirmationViewController" title="Add Location" id="0df-n0-5iP" userLabel="Confirm Location View Controller" customClass="PostConfirmationViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zi0-nV-JlC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
