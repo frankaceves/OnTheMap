@@ -37,13 +37,13 @@ class PostLocationViewController: UIViewController {
             //enable UI
         } else {
             let userLocation = locationStringTextField.text!
-            //print(locationStringTextField.text!, urlTextField.text!)
-            //print("next step: execute geocode, then parse POST method")
+            
             ParseClient.sharedInstance().findStudentLocation(location: userLocation)
-            //call parse function
+            //if results are present, instantiate a new VC.
                 //get mapString
                 //geocode into lat/long
                 //present another map view?
+                //confirm location, which calls parse function
         }
     }
     /*
