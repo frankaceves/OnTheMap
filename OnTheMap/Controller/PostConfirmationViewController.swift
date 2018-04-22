@@ -40,8 +40,10 @@ class PostConfirmationViewController: UIViewController, MKMapViewDelegate {
 //        annotation.title = "\(first) \(last)"
 //        annotation.subtitle = mediaURL
         
+        
         DispatchQueue.main.async {
         self.mapView.addAnnotation(annotation)
+            
         }
 }
 

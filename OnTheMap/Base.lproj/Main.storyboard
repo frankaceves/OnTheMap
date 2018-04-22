@@ -384,7 +384,11 @@
                                     <constraint firstAttribute="height" constant="44" id="3BR-GC-f5m"/>
                                 </constraints>
                                 <items>
-                                    <navigationItem title="Add Location" id="CKn-Ly-2Ui"/>
+                                    <navigationItem title="Add Location" id="CKn-Ly-2Ui">
+                                        <barButtonItem key="backBarButtonItem" title="Item" id="76r-vO-Gkh" userLabel="Back">
+                                            <color key="tintColor" red="1" green="0.25662929270000001" blue="0.64030529359999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </barButtonItem>
+                                    </navigationItem>
                                 </items>
                             </navigationBar>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="ZV3-z3-kKN">
