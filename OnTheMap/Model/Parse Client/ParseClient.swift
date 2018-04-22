@@ -11,6 +11,9 @@ import CoreLocation
 
 class ParseClient: NSObject {
     var session = URLSession.shared
+    // MARK: PROPERTIES
+    var userLat: Double!
+    var userLon: Double!
     
     // MARK: Initializers
     
@@ -73,13 +76,28 @@ class ParseClient: NSObject {
     }
     
     // UPDATE STUDENT INFO
-    func updateStudentInfo(_ completionHandlerfForUpdateStudentInfo: @escaping (_ success: Bool, _ error: NSError?) -> Void) {
-    
-        
-        
-        
+    private func updateStudentInfo(_ completionHandlerfForUpdateStudentInfo: @escaping (_ success: Bool, _ error: NSError?) -> Void) {
         // if results = parsedResults["updatedAt"] as string, completion (true, nil)
         // if no results, completion (false, error)
+    }
+    
+    // FIND STUDENT LOCATION
+    func findStudentLocation(location: String) {
+        forwardGeocodeLocationString(locationString: location)
+    }
+    
+    func forwardGeocodeLocationString(locationString: String) {
+        CLGeocoder().geocodeAddressString(locationString) { (result, error) in
+            if error != nil {
+                print(error!)
+                return
+            }
+            if let location = result, let coordinate = location[0].location?.coordinate {
+                self.userLat = coordinate.latitude
+                self.userLon = coordinate.longitude
+                print("lat: \(self.userLat!), long: \(self.userLon!)")
+            }
+        }
     }
     
     // MARK: Shared Instance

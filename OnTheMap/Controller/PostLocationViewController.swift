@@ -32,15 +32,14 @@ class PostLocationViewController: UIViewController {
     
     @IBAction func findLocation(_ sender: UIButton) {
         //disable UI
-        
-        
-        
         if locationStringTextField.text!.isEmpty || urlTextField.text!.isEmpty {
             print("location and url are required!")
             //enable UI
         } else {
-            print(locationStringTextField.text!, urlTextField.text!)
-            print("next step: execute geocode, then parse POST method")
+            let userLocation = locationStringTextField.text!
+            //print(locationStringTextField.text!, urlTextField.text!)
+            //print("next step: execute geocode, then parse POST method")
+            ParseClient.sharedInstance().findStudentLocation(location: userLocation)
             //call parse function
                 //get mapString
                 //geocode into lat/long
