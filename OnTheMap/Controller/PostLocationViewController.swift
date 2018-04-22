@@ -38,7 +38,14 @@ class PostLocationViewController: UIViewController {
         } else {
             let userLocation = locationStringTextField.text!
             
-            ParseClient.sharedInstance().findStudentLocation(location: userLocation)
+            ParseClient.sharedInstance().findStudentLocation(location: userLocation, completionHandlerForFindStudentLocation: { (success, error) in
+                if success {
+                    DispatchQueue.main.async {
+                        let controller = self.storyboard!.instantiateViewController(withIdentifier: "PostConfirmationViewController")
+                        self.present(controller, animated: true, completion: nil)
+                    }
+                }
+            })
             //if results are present, instantiate a new VC.
                 //get mapString
                 //geocode into lat/long

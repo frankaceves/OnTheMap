@@ -82,11 +82,16 @@ class ParseClient: NSObject {
     }
     
     // FIND STUDENT LOCATION
-    func findStudentLocation(location: String) {
-        forwardGeocodeLocationString(locationString: location)
+    func findStudentLocation(location: String, completionHandlerForFindStudentLocation: @escaping (_ success: Bool, _ error: NSError?) -> Void) {
+        forwardGeocodeLocationString(locationString: location) { (success, error) in
+            if success == success {
+                //print("success")
+                completionHandlerForFindStudentLocation(true, nil)
+            }
+        }
     }
     
-    func forwardGeocodeLocationString(locationString: String) {
+    func forwardGeocodeLocationString(locationString: String, _ completionHandlerForGeocoder: @escaping (_ success: Bool, _ error: NSError?) -> Void) {
         CLGeocoder().geocodeAddressString(locationString) { (result, error) in
             if error != nil {
                 print(error!)
@@ -96,6 +101,7 @@ class ParseClient: NSObject {
                 self.userLat = coordinate.latitude
                 self.userLon = coordinate.longitude
                 print("lat: \(self.userLat!), long: \(self.userLon!)")
+                completionHandlerForGeocoder(true, nil)
             }
         }
     }

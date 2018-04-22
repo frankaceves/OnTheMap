@@ -389,6 +389,9 @@
                             </navigationBar>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="ZV3-z3-kKN">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <connections>
+                                    <outlet property="delegate" destination="0df-n0-5iP" id="N2E-Q6-bS2"/>
+                                </connections>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="252" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qJP-op-tCu" userLabel="Finish Button">
                                 <rect key="frame" x="30" y="623" width="315" height="30"/>
@@ -396,9 +399,6 @@
                                 <state key="normal" title="FINISH">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
-                                <connections>
-                                    <action selector="findLocation:" destination="0df-n0-5iP" eventType="touchUpInside" id="Npb-KY-b4z"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -418,6 +418,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="bqG-af-sed"/>
                     </view>
+                    <connections>
+                        <outlet property="mapView" destination="ZV3-z3-kKN" id="GXK-zU-qVt"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="plm-vc-89f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
