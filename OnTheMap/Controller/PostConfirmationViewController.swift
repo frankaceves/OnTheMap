@@ -18,7 +18,7 @@ class PostConfirmationViewController: UIViewController, MKMapViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        print("studentKey: \(UdacityClient.Constants.studentKey)")
         // Do any additional setup after loading the view.
     }
     

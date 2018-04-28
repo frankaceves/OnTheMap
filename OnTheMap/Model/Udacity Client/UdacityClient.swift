@@ -54,6 +54,17 @@ class UdacityClient: NSObject {
                 return
             }
             
+            guard let account = parsedResults["account"] else {
+                print("account error")
+                return
+            }
+            
+            if let studentKey = account["key"] as? String {
+                
+                Constants.studentKey = studentKey
+                //print("studentKey = \(Constants.studentKey)")
+            }
+            
             if let sessionID = sessionInfo["id"] as? String {
             //if data returned contains a session ID, instantiate new view controller
                 
