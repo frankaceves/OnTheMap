@@ -116,6 +116,9 @@ class StudentMapViewController: UIViewController, MKMapViewDelegate {
     }
     
     @IBAction private func postLocation() {
+        //when button clicked, check for object ID
+        //if objectID exists, notification for overwrite
+        //if no objectID, instantiate PostLocationVC
         let controller = storyboard!.instantiateViewController(withIdentifier: "PostLocationViewController") as UIViewController
         present(controller, animated: true, completion: nil)
     }
