@@ -75,6 +75,55 @@ class ParseClient: NSObject {
         
     }
     
+    func checkForObjectId(_ uniqueKey: String) { //params UniqueKey from parseClient Constant
+        //let uniqueKey = "5401038719"
+        
+        var urlString = "https://parse.udacity.com/parse/classes/StudentLocation"
+        urlString.append("?where=%7B%22uniqueKey%22%3A%22\(uniqueKey)%22%7D")
+        let url = URL(string: urlString)
+        var request = URLRequest(url: url!)
+        request.addValue("QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr", forHTTPHeaderField: "X-Parse-Application-Id")
+        request.addValue("QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY", forHTTPHeaderField: "X-Parse-REST-API-Key")
+        let session = URLSession.shared
+        let task = session.dataTask(with: request) { data, response, error in
+            if error != nil { // Handle error
+                return
+            }
+            //print(String(data: data!, encoding: .utf8)!)
+            
+            //var parsedResults: [String:AnyObject]!
+            guard let parsedResults = try! JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? [String: AnyObject] else {
+                print("parse query error")
+                return
+            }
+            //print(parsedResults)
+            
+            guard let results = parsedResults["results"] as? [[String: AnyObject]] else {
+                print("no results")
+                return
+            }
+            
+            print(results)
+            for result in results {
+                var firstName: String = ""
+                var lastName: String = ""
+                if let objectId = result["objectId"] as? String { //insert objectID from parseClient constants.
+                    print("objectID: \(objectId)")
+                    if let fName = result[JSONResponseKeys.FirstName] as? String {
+                        firstName = fName
+                    }
+                    
+                    if let lName = result[JSONResponseKeys.LastName] as? String {
+                        lastName = lName
+                    }
+                    
+                    print("User \(firstName) \(lastName) has already posted a Student Location. Would you like to overwrite their location?")
+                }
+            }
+        }
+        task.resume()
+    }
+    
     // UPDATE STUDENT INFO
     private func updateStudentInfo(_ completionHandlerfForUpdateStudentInfo: @escaping (_ success: Bool, _ error: NSError?) -> Void) {
         // if results = parsedResults["updatedAt"] as string, completion (true, nil)
