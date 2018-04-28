@@ -75,7 +75,7 @@ class ParseClient: NSObject {
         
     }
     
-    func checkForObjectId(_ uniqueKey: String) { //params UniqueKey from parseClient Constant
+    func checkForObjectId(_ uniqueKey: String, _ completionHandlerfForCheckForObjectId: @escaping (_ result: Bool) -> Void) { //params UniqueKey from parseClient Constant
         //let uniqueKey = "5401038719"
         
         var urlString = "https://parse.udacity.com/parse/classes/StudentLocation"
@@ -102,8 +102,11 @@ class ParseClient: NSObject {
                 print("no results")
                 return
             }
-            
-            print(results)
+            print("results empty: \(results.isEmpty)")
+            if results.isEmpty {
+                completionHandlerfForCheckForObjectId(false)
+            }
+            //print(results)
             for result in results {
                 var firstName: String = ""
                 var lastName: String = ""
@@ -118,6 +121,8 @@ class ParseClient: NSObject {
                     }
                     
                     print("User \(firstName) \(lastName) has already posted a Student Location. Would you like to overwrite their location?")
+                } else {
+                    print("no ObjectID exists for this user: \(uniqueKey)")
                 }
             }
         }

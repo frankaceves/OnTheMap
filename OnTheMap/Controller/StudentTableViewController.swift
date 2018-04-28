@@ -78,9 +78,17 @@ class StudentTableViewController: UITableViewController {
         }
     }
     
-    @IBAction private func postLocation() {
-        let controller = storyboard!.instantiateViewController(withIdentifier: "PostLocationViewController") as UIViewController
-        present(controller, animated: true, completion: nil)
+    @IBAction private func postLocationPressed() {
+        //when button clicked, check for object ID
+        ParseClient.sharedInstance().checkForObjectId(UdacityClient.Constants.studentKey) { (success) in
+            if !success {
+                let controller = self.storyboard!.instantiateViewController(withIdentifier: "PostLocationViewController") as UIViewController
+                self.present(controller, animated: true, completion: nil)
+            }
+        }
+        //if objectID exists, notification for overwrite
+        //if no objectID, instantiate PostLocationVC
+        
     }
     
 

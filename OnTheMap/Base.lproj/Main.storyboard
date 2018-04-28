@@ -203,7 +203,7 @@
                         <rightBarButtonItems>
                             <barButtonItem systemItem="add" id="8qK-tr-Aik">
                                 <connections>
-                                    <action selector="postLocation" destination="MYq-5x-sQH" id="Uui-yt-ygq"/>
+                                    <action selector="postLocationPressed" destination="MYq-5x-sQH" id="WWs-si-AY7"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem systemItem="refresh" id="z6g-T7-ydX">
@@ -256,7 +256,7 @@
                         <rightBarButtonItems>
                             <barButtonItem systemItem="add" id="cn0-Qb-mPG">
                                 <connections>
-                                    <action selector="postLocation" destination="hsB-mP-MlO" id="NB6-tQ-kNU"/>
+                                    <action selector="postLocationPressed" destination="hsB-mP-MlO" id="Ktr-a4-TTS"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem systemItem="refresh" id="BFq-Kq-3VB">
