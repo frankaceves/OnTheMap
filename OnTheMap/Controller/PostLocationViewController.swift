@@ -41,8 +41,9 @@ class PostLocationViewController: UIViewController {
             ParseClient.sharedInstance().findStudentLocation(location: userLocation, completionHandlerForFindStudentLocation: { (success, error) in
                 if success {
                     DispatchQueue.main.async {
-                        let controller = self.storyboard!.instantiateViewController(withIdentifier: "PostConfirmationViewController")
-                        self.present(controller, animated: true, completion: nil)
+//                        let controller = self.storyboard!.instantiateViewController(withIdentifier: "PostConfirmationViewController")
+//                        self.present(controller, animated: true, completion: nil)
+                        self.performSegue(withIdentifier: "confirmLocation", sender: AnyObject.self)
                     }
                 }
             })

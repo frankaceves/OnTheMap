@@ -73,7 +73,10 @@ class PostConfirmationViewController: UIViewController, MKMapViewDelegate {
         return pinView
     }
     
-
+    @IBAction func backButtonPressed(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     /*
     // MARK: - Navigation
 
