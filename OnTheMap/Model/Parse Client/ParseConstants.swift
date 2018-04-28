@@ -19,4 +19,8 @@ extension ParseClient {
         static let URL = "mediaURL"
         static let ObjectID = "objectId"
     }
+    
+    struct Constants {
+        let objectID: String!
+    }
 }
