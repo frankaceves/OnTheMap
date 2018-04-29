@@ -43,7 +43,9 @@ class LoginViewController: UIViewController {
         //self.completeLogin() // REMOVE when ready to ship.
         // MARK - UNCOMMENT TO ENABLE LOGIN REQUEST
         if (usernameTextField.text?.isEmpty)! || (passwordTextField.text?.isEmpty)! {
-            print("error: Missing username or password")
+            let alert = UIAlertController(title: "Login Failed", message: "Missing Email or Password", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
+            self.present(alert, animated: true)
             return
             //enable UI
         } else {
@@ -58,7 +60,13 @@ class LoginViewController: UIViewController {
                         self.completeLogin()
                     }
                 } else {
-                    print("error with login request in LoginPressed func, LoginVC.swift")
+                    //print("error with login request in LoginPressed func, LoginVC.swift")
+                    DispatchQueue.main.async {
+                        let alert = UIAlertController(title: "Login Failed", message: error, preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
+                        self.present(alert, animated: true)
+                    }
+                    
                 }
             })
 

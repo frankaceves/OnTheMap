@@ -30,6 +30,7 @@ class UdacityClient: NSObject {
         
         let task = session.dataTask(with: request) { data, response, error in
             if error != nil { // Handle error…
+                completionHandlerForLogin(false, nil, "invalid credentials")
                 return
             }
             
@@ -37,7 +38,13 @@ class UdacityClient: NSObject {
         let newData = data?.subdata(in: range) /* subset response data! */
             //print(String(data: newData!, encoding: .utf8)!)
         
-        
+            // guard 2xx status
+            guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >= 200 && statusCode <= 299 else {
+                print("status code returned other than 2xx")
+                completionHandlerForLogin(false, nil, "Invalid Credentials. Please Try Again.")
+                return
+            }
+            
             //use data
             let parsedResults: [String:AnyObject]!
             
@@ -50,7 +57,8 @@ class UdacityClient: NSObject {
             }
             
             guard let sessionInfo = parsedResults["session"] else {
-                print("sessionInfo error")
+                //print("sessionInfo error")
+                completionHandlerForLogin(false, nil, "Session Info Error")
                 return
             }
             
@@ -70,8 +78,8 @@ class UdacityClient: NSObject {
                 
                 completionHandlerForLogin(true, "sessionID: \(sessionID)", nil)
             } else {
-                print("sessionID error")
-                completionHandlerForLogin(false, nil, "sessionID error; could not retrieve a session ID")
+                //print("sessionID error")
+                completionHandlerForLogin(false, nil, "Could not retrieve a session ID")
             }
             
         }
