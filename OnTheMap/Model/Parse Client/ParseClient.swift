@@ -108,21 +108,20 @@ class ParseClient: NSObject {
             }
             //print(results)
             for result in results {
-                var firstName: String = ""
-                var lastName: String = ""
+                
                 if let objectId = result["objectId"] as? String { //insert objectID from parseClient constants.
                     print("objectID: \(objectId)")
                     if let fName = result[JSONResponseKeys.FirstName] as? String {
-                        firstName = fName
+                
                     }
                     
                     if let lName = result[JSONResponseKeys.LastName] as? String {
-                        lastName = lName
+                        
                     }
                     
-                    print("User \(firstName) \(lastName) has already posted a Student Location. Would you like to overwrite their location?")
-                } else {
-                    print("no ObjectID exists for this user: \(uniqueKey)")
+                    //print("User \(firstName) \(lastName) has already posted a Student Location. Would you like to overwrite their location?")
+                    completionHandlerfForCheckForObjectId(true)
+                    
                 }
             }
         }

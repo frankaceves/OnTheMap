@@ -21,6 +21,8 @@ extension ParseClient {
     }
     
     struct Constants {
-        let objectID: String!
+        var objectID: String!
+        var firstName: String!
+        var lastName: String!
     }
 }

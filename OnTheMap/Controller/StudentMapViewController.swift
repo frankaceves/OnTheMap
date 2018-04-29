@@ -118,14 +118,22 @@ class StudentMapViewController: UIViewController, MKMapViewDelegate {
     @IBAction private func postLocationPressed() {
         //when button clicked, check for object ID
         ParseClient.sharedInstance().checkForObjectId(UdacityClient.Constants.studentKey) { (success) in
+            //if no objectID, instantiate PostLocationVC
             if !success {
                 let controller = self.storyboard!.instantiateViewController(withIdentifier: "PostLocationViewController") as UIViewController
                 self.present(controller, animated: true, completion: nil)
+            } else {
+                //if objectID exists, notification for overwrite
+                let alert = UIAlertController(title: nil, message: "User has already posted a Student Location. Would you like to overwrite their location?", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Overwrite", style: .default, handler: { action in
+                    print("overwrite pressed")
+                    let controller = self.storyboard!.instantiateViewController(withIdentifier: "PostLocationViewController") as UIViewController
+                    self.present(controller, animated: true, completion: nil)
+                }))
+                alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
+                self.present(alert, animated: true)
             }
         }
-        //if objectID exists, notification for overwrite
-        //if no objectID, instantiate PostLocationVC
-        
     }
     
     
