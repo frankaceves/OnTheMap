@@ -110,7 +110,10 @@ class StudentMapViewController: UIViewController, MKMapViewDelegate {
             if error != nil {
                 print("logout error")
             } else {
-                self.dismiss(animated: true, completion: nil)
+                
+                DispatchQueue.main.async {
+                    self.dismiss(animated: true, completion: nil)
+                }
             }
         }
     }
