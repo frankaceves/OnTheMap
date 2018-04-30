@@ -40,11 +40,15 @@ class PostConfirmationViewController: UIViewController, MKMapViewDelegate {
 //        annotation.title = "\(first) \(last)"
 //        annotation.subtitle = mediaURL
         
+        let mapSpan = MKCoordinateSpanMake(0.02, 0.02)
+        let region = MKCoordinateRegion(center: coordinate, span: mapSpan)
+        self.mapView.setRegion(region, animated: true)
         
-        DispatchQueue.main.async {
+        
+        //DispatchQueue.main.async {
         self.mapView.addAnnotation(annotation)
-            
-        }
+        
+        //}
 }
 
     override func didReceiveMemoryWarning() {
