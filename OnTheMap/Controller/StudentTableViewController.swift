@@ -86,6 +86,16 @@ class StudentTableViewController: UITableViewController {
             if !success {
                 let controller = self.storyboard!.instantiateViewController(withIdentifier: "PostLocationViewController") as UIViewController
                 self.present(controller, animated: true, completion: nil)
+            } else {
+                //if objectID exists, notification for overwrite
+                let alert = UIAlertController(title: nil, message: "User \"\(ParseClient.sharedInstance().firstName!) \(ParseClient.sharedInstance().lastName!)\" has already posted a Student Location. Would you like to overwrite their location?", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Overwrite", style: .default, handler: { action in
+                    print("overwrite pressed")
+                    let controller = self.storyboard!.instantiateViewController(withIdentifier: "PostLocationViewController") as UIViewController
+                    self.present(controller, animated: true, completion: nil)
+                }))
+                alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
+                self.present(alert, animated: true)
             }
         }
         //if objectID exists, notification for overwrite
