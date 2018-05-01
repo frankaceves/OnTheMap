@@ -54,6 +54,7 @@ class LoginViewController: UIViewController {
 
             UdacityClient.sharedInstance().loginRequest(username: username, password: password, completionHandlerForLogin: { (success, sessionID, error) in
                 if success {
+                    UdacityClient.sharedInstance().getPublicData()
                     DispatchQueue.main.async {
                         self.completeLogin()
                     }

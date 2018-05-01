@@ -12,6 +12,8 @@ extension UdacityClient {
     // MARK: Constants
     struct Constants {
         static var studentKey: String = ""
+        static var firstName: String = ""
+        static var lastName: String = ""
         
         // MARK: API Key
         static let ApiKey = "insert API KEY HERE"

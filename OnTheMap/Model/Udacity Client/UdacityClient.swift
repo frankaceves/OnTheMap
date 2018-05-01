@@ -116,6 +116,41 @@ class UdacityClient: NSObject {
         task.resume()
     }
     
+    // MARK: GET PUBLIC USER DATA
+    func getPublicData() {
+        let request = URLRequest(url: URL(string: "https://www.udacity.com/api/users/\(Constants.studentKey)")!)
+        let session = URLSession.shared
+        let task = session.dataTask(with: request) { data, response, error in
+            if error != nil { // Handle error...
+                return
+            }
+            let range = Range(5..<data!.count)
+            let newData = data?.subdata(in: range) /* subset response data! */
+            //print(String(data: newData!, encoding: .utf8)!)
+            
+            guard let parsedResults = try? JSONSerialization.jsonObject(with: newData!, options: .allowFragments) as! [String:AnyObject] else {
+                print("public parse error")
+                return
+            }
+            
+            guard let user = parsedResults["user"] as? [String:AnyObject] else {
+                print("user parse error")
+                return
+            }
+            
+            guard let firstName = user["first_name"] as? String, let lastName = user["last_name"] as? String else {
+                print("first/last name error")
+                return
+            }
+            Constants.firstName = firstName
+            Constants.lastName = lastName
+            print("user: \(Constants.firstName) \(Constants.lastName)")
+            
+            
+        }
+        task.resume()
+    }
+    
     
     // MARK: Shared Instance
     
