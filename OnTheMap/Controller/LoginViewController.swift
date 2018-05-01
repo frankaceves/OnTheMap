@@ -40,8 +40,6 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func loginPressed(_ sender: UIButton) {
-        //self.completeLogin() // REMOVE when ready to ship.
-        // MARK - UNCOMMENT TO ENABLE LOGIN REQUEST
         if (usernameTextField.text?.isEmpty)! || (passwordTextField.text?.isEmpty)! {
             let alert = UIAlertController(title: "Login Failed", message: "Missing Email or Password", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))

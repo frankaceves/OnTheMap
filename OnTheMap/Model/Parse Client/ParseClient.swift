@@ -113,15 +113,6 @@ class ParseClient: NSObject {
                 
                 if let objectId = result["objectId"] as? String { //insert objectID from parseClient constants.
                     print("objectID: \(objectId)")
-                    if let fName = result[JSONResponseKeys.FirstName] as? String {
-                        self.firstName = fName
-                    }
-                    
-                    if let lName = result[JSONResponseKeys.LastName] as? String {
-                        self.lastName = lName
-                    }
-                    
-                    //print("User \(firstName) \(lastName) has already posted a Student Location. Would you like to overwrite their location?")
                     completionHandlerfForCheckForObjectId(true)
                     
                 }
