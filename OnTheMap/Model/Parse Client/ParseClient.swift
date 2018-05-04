@@ -16,6 +16,7 @@ class ParseClient: NSObject {
     var userLon: Double!
     var firstName: String?
     var lastName: String?
+    var objectID: String?
     
     // MARK: Initializers
     
@@ -104,15 +105,16 @@ class ParseClient: NSObject {
                 print("no results")
                 return
             }
-            print("results empty: \(results.isEmpty)")
+            
             if results.isEmpty {
                 completionHandlerfForCheckForObjectId(false)
             }
             //print(results)
             for result in results {
                 
-                if let objectId = result["objectId"] as? String { //insert objectID from parseClient constants.
-                    print("objectID: \(objectId)")
+                if let objectID = result["objectId"] as? String { //insert objectID from parseClient constants.
+                    print("objectID = \(objectID)")
+                    
                     completionHandlerfForCheckForObjectId(true)
                     
                 }
@@ -121,7 +123,7 @@ class ParseClient: NSObject {
         task.resume()
     }
     // POST STUDENT INFO
-    func postLocation() {
+    func postLocation(_ completionHandlerfForPostLocation: @escaping (_ success: Bool, _ error: NSError?) -> Void) {
         let lat = Float(ParseClient.sharedInstance().userLat)
         let lon = Float(ParseClient.sharedInstance().userLon)
         
@@ -143,13 +145,27 @@ class ParseClient: NSObject {
                 print("no data returned")
                 return
             }
-            print(String(data: data, encoding: .utf8)!)
+            //print(String(data: data, encoding: .utf8)!)
             
             guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >= 200 && statusCode <= 299 else {
                 print("status code returned other than 2xx")
                 print(response as AnyObject)
                 return
             }
+            
+            guard let parsedResults = try! JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: AnyObject] else {
+                print("parse query error")
+                return
+            }
+            //print(parsedResults)
+            
+            if let objectID = parsedResults["objectId"] as? String {
+                self.objectID = objectID
+                print("new object ID: \(self.objectID!)")
+                completionHandlerfForPostLocation(true, nil)
+                
+            }
+            
 
         }
         task.resume()
