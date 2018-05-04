@@ -57,6 +57,8 @@ class PostConfirmationViewController: UIViewController, MKMapViewDelegate {
     }
     
     
+    
+    
     // MARK: - MKMapViewDelegate
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         
@@ -81,6 +83,9 @@ class PostConfirmationViewController: UIViewController, MKMapViewDelegate {
         self.dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func finishButtonPressed(_ sender: Any) {
+        ParseClient.sharedInstance().postLocation()
+    }
     /*
     // MARK: - Navigation
 

@@ -120,6 +120,40 @@ class ParseClient: NSObject {
         }
         task.resume()
     }
+    // POST STUDENT INFO
+    func postLocation() {
+        let lat = Float(ParseClient.sharedInstance().userLat)
+        let lon = Float(ParseClient.sharedInstance().userLon)
+        
+        var request = URLRequest(url: URL(string: "https://parse.udacity.com/parse/classes/StudentLocation")!)
+        request.httpMethod = "POST"
+        request.addValue("QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr", forHTTPHeaderField: "X-Parse-Application-Id")
+        request.addValue("QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY", forHTTPHeaderField: "X-Parse-REST-API-Key")
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = "{\"uniqueKey\": \"\(UdacityClient.Constants.studentKey)\", \"firstName\": \"\(UdacityClient.Constants.firstName)\", \"lastName\": \"\(UdacityClient.Constants.lastName)\",\"mapString\": \"Costa Mesa, CA\", \"mediaURL\": \"https://www.facebook.com\",\"latitude\": \(lat), \"longitude\": \(lon)}".data(using: .utf8)
+        
+        let session = URLSession.shared
+        let task = session.dataTask(with: request) { data, response, error in
+            guard (error == nil) else {
+                print("error in your request")
+                return
+            }
+            
+            guard let data = data else {
+                print("no data returned")
+                return
+            }
+            print(String(data: data, encoding: .utf8)!)
+            
+            guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >= 200 && statusCode <= 299 else {
+                print("status code returned other than 2xx")
+                print(response as AnyObject)
+                return
+            }
+
+        }
+        task.resume()
+    }
     
     // UPDATE STUDENT INFO
     private func updateStudentInfo(_ completionHandlerfForUpdateStudentInfo: @escaping (_ success: Bool, _ error: NSError?) -> Void) {
