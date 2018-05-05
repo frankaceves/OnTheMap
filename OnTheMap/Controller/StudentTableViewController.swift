@@ -84,6 +84,7 @@ class StudentTableViewController: UITableViewController {
         //when button clicked, check for object ID
         ParseClient.sharedInstance().checkForObjectId(UdacityClient.Constants.studentKey) { (success) in
             if !success {
+                //if no objectID, instantiate PostLocationVC
                 let controller = self.storyboard!.instantiateViewController(withIdentifier: "PostLocationViewController") as UIViewController
                 self.present(controller, animated: true, completion: nil)
             } else {
@@ -98,8 +99,8 @@ class StudentTableViewController: UITableViewController {
                 self.present(alert, animated: true)
             }
         }
-        //if objectID exists, notification for overwrite
-        //if no objectID, instantiate PostLocationVC
+        
+        
         
     }
     
