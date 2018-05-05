@@ -37,8 +37,11 @@ class PostLocationViewController: UIViewController {
             //enable UI
         } else {
             let userLocation = locationStringTextField.text!
+            let userURL = urlTextField.text!
+            //execute function to check validity of url?
             
-            ParseClient.sharedInstance().findStudentLocation(location: userLocation, completionHandlerForFindStudentLocation: { (success, error) in
+            
+            ParseClient.sharedInstance().findStudentLocation(location: userLocation, userURL: userURL, completionHandlerForFindStudentLocation: { (success, error) in
                 if success {
                     DispatchQueue.main.async {
 //                        let controller = self.storyboard!.instantiateViewController(withIdentifier: "PostConfirmationViewController")

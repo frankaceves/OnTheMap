@@ -17,6 +17,7 @@ class ParseClient: NSObject {
     var firstName: String?
     var lastName: String?
     var objectID: String?
+    var locationString: String?
     
     // MARK: Initializers
     
@@ -132,7 +133,8 @@ class ParseClient: NSObject {
         request.addValue("QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr", forHTTPHeaderField: "X-Parse-Application-Id")
         request.addValue("QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY", forHTTPHeaderField: "X-Parse-REST-API-Key")
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.httpBody = "{\"uniqueKey\": \"\(UdacityClient.Constants.studentKey)\", \"firstName\": \"\(UdacityClient.Constants.firstName)\", \"lastName\": \"\(UdacityClient.Constants.lastName)\",\"mapString\": \"Costa Mesa, CA\", \"mediaURL\": \"https://www.facebook.com\",\"latitude\": \(lat), \"longitude\": \(lon)}".data(using: .utf8)
+        request.httpBody = "{\"uniqueKey\": \"\(UdacityClient.Constants.studentKey)\", \"firstName\": \"\(UdacityClient.Constants.firstName)\", \"lastName\": \"\(UdacityClient.Constants.lastName)\",\"mapString\": \"\(ParseClient.sharedInstance().locationString!)\", \"mediaURL\": \"https://www.facebook.com\",\"latitude\": \(lat), \"longitude\": \(lon)}".data(using: .utf8)
+        
         
         let session = URLSession.shared
         let task = session.dataTask(with: request) { data, response, error in
@@ -177,12 +179,25 @@ class ParseClient: NSObject {
         // if no results, completion (false, error)
     }
     
+    private func checkURLValidity(userURL: String?) -> Bool {
+        if let urlString = userURL, let url = URL(string: urlString)  {
+            print("can open URL: \(UIApplication.shared.canOpenURL(url))")
+            return UIApplication.shared.canOpenURL(url)
+        }
+        return false
+    }
+    
     // FIND STUDENT LOCATION
-    func findStudentLocation(location: String, completionHandlerForFindStudentLocation: @escaping (_ success: Bool, _ error: NSError?) -> Void) {
+    func findStudentLocation(location: String, userURL: String, completionHandlerForFindStudentLocation: @escaping (_ success: Bool, _ error: NSError?) -> Void) {
+        print("user location: \(location) \nuser url: \(userURL)")
         forwardGeocodeLocationString(locationString: location) { (success, error) in
-            if success == success {
-                //print("success")
-                completionHandlerForFindStudentLocation(true, nil)
+            if success == true {
+                self.locationString = location
+                //instead of completion handler here, verify URL validity,
+                //if URL is valid, then execute completion handler
+                completionHandlerForFindStudentLocation(self.checkURLValidity(userURL: userURL), nil)
+            } else {
+                completionHandlerForFindStudentLocation(false, NSError(domain: "findStudentLocation", code: 0, userInfo: nil))
             }
         }
     }
@@ -196,7 +211,7 @@ class ParseClient: NSObject {
             if let location = result, let coordinate = location[0].location?.coordinate {
                 self.userLat = coordinate.latitude
                 self.userLon = coordinate.longitude
-                print("lat: \(self.userLat!), long: \(self.userLon!)")
+                //print("lat: \(self.userLat!), long: \(self.userLon!)")
                 completionHandlerForGeocoder(true, nil)
             }
         }

@@ -86,7 +86,7 @@ class PostConfirmationViewController: UIViewController, MKMapViewDelegate {
     @IBAction func finishButtonPressed(_ sender: Any) {
         ParseClient.sharedInstance().postLocation { (success, error) in
             if success == true {
-                print(success)
+                print("POST success")
                 DispatchQueue.main.async {
                     self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
                 }
