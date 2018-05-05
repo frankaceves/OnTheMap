@@ -18,6 +18,7 @@ class ParseClient: NSObject {
     var lastName: String?
     var objectID: String?
     var locationString: String?
+    var userURL: String?
     
     // MARK: Initializers
     
@@ -128,12 +129,13 @@ class ParseClient: NSObject {
         let lat = Float(ParseClient.sharedInstance().userLat)
         let lon = Float(ParseClient.sharedInstance().userLon)
         
+        
         var request = URLRequest(url: URL(string: "https://parse.udacity.com/parse/classes/StudentLocation")!)
         request.httpMethod = "POST"
         request.addValue("QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr", forHTTPHeaderField: "X-Parse-Application-Id")
         request.addValue("QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY", forHTTPHeaderField: "X-Parse-REST-API-Key")
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.httpBody = "{\"uniqueKey\": \"\(UdacityClient.Constants.studentKey)\", \"firstName\": \"\(UdacityClient.Constants.firstName)\", \"lastName\": \"\(UdacityClient.Constants.lastName)\",\"mapString\": \"\(ParseClient.sharedInstance().locationString!)\", \"mediaURL\": \"https://www.facebook.com\",\"latitude\": \(lat), \"longitude\": \(lon)}".data(using: .utf8)
+        request.httpBody = "{\"uniqueKey\": \"\(UdacityClient.Constants.studentKey)\", \"firstName\": \"\(UdacityClient.Constants.firstName)\", \"lastName\": \"\(UdacityClient.Constants.lastName)\",\"mapString\": \"\(ParseClient.sharedInstance().locationString!)\", \"mediaURL\": \"\(ParseClient.sharedInstance().userURL!)\",\"latitude\": \(lat), \"longitude\": \(lon)}".data(using: .utf8)
         
         
         let session = URLSession.shared
@@ -182,7 +184,10 @@ class ParseClient: NSObject {
     private func checkURLValidity(userURL: String?) -> Bool {
         if let urlString = userURL, let url = URL(string: urlString)  {
             print("can open URL: \(UIApplication.shared.canOpenURL(url))")
-            return UIApplication.shared.canOpenURL(url)
+            if UIApplication.shared.canOpenURL(url) == true {
+                self.userURL = userURL
+                return true
+            }
         }
         return false
     }
