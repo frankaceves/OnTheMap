@@ -84,6 +84,19 @@ class PostConfirmationViewController: UIViewController, MKMapViewDelegate {
     }
     
     @IBAction func finishButtonPressed(_ sender: Any) {
+        if let id = ParseClient.sharedInstance().objectID  {
+            print("student contains object id: \(id)... proceed to update")
+            ParseClient.sharedInstance().updateStudentInfo(objectID: id, { (success, error) in
+                if success == true {
+                    print("update success")
+                    DispatchQueue.main.async {
+                        self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
+                    }
+                }
+            })
+        } else {
+        
+        
         ParseClient.sharedInstance().postLocation { (success, error) in
             if success == true {
                 //print("POST success")
@@ -92,6 +105,7 @@ class PostConfirmationViewController: UIViewController, MKMapViewDelegate {
                 }
                 
             }
+        }
         }
     }
     /*

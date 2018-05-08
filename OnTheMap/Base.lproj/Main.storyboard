@@ -347,7 +347,6 @@
                     <connections>
                         <outlet property="locationStringTextField" destination="sQ4-OK-w89" id="NjF-ob-y1h"/>
                         <outlet property="urlTextField" destination="1Vd-lw-uxd" id="faE-OD-kkx"/>
-                        <segue destination="0df-n0-5iP" kind="show" identifier="confirmLocation" id="u6w-Ps-7bc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K9v-DG-5tc" userLabel="First Responder" sceneMemberID="firstResponder"/>

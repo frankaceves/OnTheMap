@@ -17,7 +17,7 @@ class PostLocationViewController: UIViewController {
     // MARK: - LIFE CYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        print("storyboard info: \(self.description)")
         // Do any additional setup after loading the view.
     }
 
@@ -44,9 +44,13 @@ class PostLocationViewController: UIViewController {
             ParseClient.sharedInstance().findStudentLocation(location: userLocation, userURL: userURL, completionHandlerForFindStudentLocation: { (success, error) in
                 if success {
                     DispatchQueue.main.async {
-//                        let controller = self.storyboard!.instantiateViewController(withIdentifier: "PostConfirmationViewController")
-//                        self.present(controller, animated: true, completion: nil)
-                        self.performSegue(withIdentifier: "confirmLocation", sender: AnyObject.self)
+                        if ParseClient.sharedInstance().objectID != nil {
+                            let controller = self.storyboard!.instantiateViewController(withIdentifier: "PostConfirmationViewController")
+                            self.present(controller, animated: true, completion: nil)
+                        }
+                        let controller = self.storyboard!.instantiateViewController(withIdentifier: "PostConfirmationViewController")
+                        self.present(controller, animated: true, completion: nil)
+//                        self.performSegue(withIdentifier: "confirmLocation", sender: AnyObject.self)
                     }
                 }
             })
