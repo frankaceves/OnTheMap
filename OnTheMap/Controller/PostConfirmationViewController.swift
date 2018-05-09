@@ -13,6 +13,7 @@ class PostConfirmationViewController: UIViewController, MKMapViewDelegate {
     // MARK: - PROPERTIES
     let userLat = ParseClient.sharedInstance().userLat
     let userLon = ParseClient.sharedInstance().userLon
+    let userlocationString = ParseClient.sharedInstance().locationString
     
     @IBOutlet weak var mapView: MKMapView!
     
@@ -30,25 +31,22 @@ class PostConfirmationViewController: UIViewController, MKMapViewDelegate {
         
         let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
         
-//        let first = dictionary.studentFirstName!
-//        let last = dictionary.studentLastName!
-//        let mediaURL = dictionary.studentMediaURL!
-        
         
         let annotation = MKPointAnnotation()
         annotation.coordinate = coordinate
-//        annotation.title = "\(first) \(last)"
-//        annotation.subtitle = mediaURL
+        annotation.title = userlocationString
+        
         
         let mapSpan = MKCoordinateSpanMake(0.02, 0.02)
         let region = MKCoordinateRegion(center: coordinate, span: mapSpan)
         self.mapView.setRegion(region, animated: true)
         
         
-        //DispatchQueue.main.async {
-        self.mapView.addAnnotation(annotation)
         
-        //}
+        self.mapView.addAnnotation(annotation)
+        self.mapView.selectAnnotation(annotation, animated: true)
+        
+        
 }
 
     override func didReceiveMemoryWarning() {
@@ -70,7 +68,6 @@ class PostConfirmationViewController: UIViewController, MKMapViewDelegate {
             pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseID)
             pinView!.canShowCallout = true
             pinView!.pinTintColor = UIColor.red
-            pinView!.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
             
         } else {
             pinView!.annotation = annotation
@@ -85,7 +82,7 @@ class PostConfirmationViewController: UIViewController, MKMapViewDelegate {
     
     @IBAction func finishButtonPressed(_ sender: Any) {
         if let id = ParseClient.sharedInstance().objectID  {
-            print("student contains object id: \(id)... proceed to update")
+    
             ParseClient.sharedInstance().updateStudentInfo(objectID: id, { (success, error) in
                 if success == true {
                     print("update success")

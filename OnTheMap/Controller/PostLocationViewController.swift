@@ -40,17 +40,15 @@ class PostLocationViewController: UIViewController {
             let userURL = urlTextField.text!
             //execute function to check validity of url?
             
+            //enable activity indicator while geocoding
+            
             
             ParseClient.sharedInstance().findStudentLocation(location: userLocation, userURL: userURL, completionHandlerForFindStudentLocation: { (success, error) in
-                if success {
+                if success == true {
                     DispatchQueue.main.async {
-                        if ParseClient.sharedInstance().objectID != nil {
-                            let controller = self.storyboard!.instantiateViewController(withIdentifier: "PostConfirmationViewController")
-                            self.present(controller, animated: true, completion: nil)
-                        }
+                        
                         let controller = self.storyboard!.instantiateViewController(withIdentifier: "PostConfirmationViewController")
                         self.present(controller, animated: true, completion: nil)
-//                        self.performSegue(withIdentifier: "confirmLocation", sender: AnyObject.self)
                     }
                 }
             })
