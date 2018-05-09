@@ -17,14 +17,19 @@ class StudentMapViewController: UIViewController, MKMapViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //print("student map loaded")
         // Do any additional setup after loading the view.
+        
+        
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        //clear annotations
+        self.mapView.removeAnnotations(mapView.annotations)
+        //
         ParseClient.sharedInstance().getStudentInfo { (results, error) in
+            print("---GetStudentInfo called---")
             if let locations = results {
                 var annotations = [MKPointAnnotation]()
                 
@@ -100,8 +105,9 @@ class StudentMapViewController: UIViewController, MKMapViewDelegate {
     }
     
     @IBAction func reloadStudentInfo() {
-        //print("reload pressed in student Map")
+        print("reload pressed in student Map")
         // reload map view
+        self.viewWillAppear(true)
         
     }
     

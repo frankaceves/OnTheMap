@@ -18,7 +18,7 @@ class StudentTableViewController: UITableViewController {
     // MARK: - LIFE CYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        studentTableView.delegate = self
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -62,9 +62,17 @@ class StudentTableViewController: UITableViewController {
     }
     
     @IBAction func reloadStudentInfo() {
-        //print("reload pressed in student table")
-        DispatchQueue.main.async {
-            self.studentTableView.reloadData()
+        print("reload pressed in student table")
+        ParseClient.sharedInstance().getStudentInfo { (results, error) in
+            if let results = results {
+                self.students = results
+                
+                DispatchQueue.main.async {
+                    self.studentTableView.reloadData()
+                }
+            } else {
+                print(error!)
+            }
         }
     }
     
