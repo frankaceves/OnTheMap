@@ -244,6 +244,7 @@ class ParseClient: NSObject {
                 completionHandlerForFindStudentLocation(self.checkURLValidity(userURL: userURL), nil)
             } else {
                 completionHandlerForFindStudentLocation(false, NSError(domain: "findStudentLocation", code: 0, userInfo: nil))
+                
             }
         }
     }

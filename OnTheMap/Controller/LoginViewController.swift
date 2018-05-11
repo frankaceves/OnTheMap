@@ -12,6 +12,7 @@ import Foundation
 class LoginViewController: UIViewController {
     // MARK: - PROPERTIES
     
+    @IBOutlet weak var activityView: UIActivityIndicatorView!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var debugTextLabel: UILabel!
     
@@ -21,7 +22,7 @@ class LoginViewController: UIViewController {
     // MARK: - LIFE CYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        activityView.stopAnimating()
         // Do any additional setup after loading the view.
     }
 
@@ -49,18 +50,22 @@ class LoginViewController: UIViewController {
         } else {
             //disable UI
             //execute login request function
+            activityView.startAnimating()
             let username = usernameTextField.text!
             let password = passwordTextField.text!
-
+            
             UdacityClient.sharedInstance().loginRequest(username: username, password: password, completionHandlerForLogin: { (success, sessionID, error) in
                 if success {
                     UdacityClient.sharedInstance().getPublicData()
                     DispatchQueue.main.async {
+                        
                         self.completeLogin()
+                        //self.activityView.stopAnimating()
                     }
                 } else {
                     //print("error with login request in LoginPressed func, LoginVC.swift")
                     DispatchQueue.main.async {
+                        self.activityView.stopAnimating()
                         let alert = UIAlertController(title: "Login Failed", message: error, preferredStyle: .alert)
                         alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
                         self.present(alert, animated: true)
@@ -78,6 +83,7 @@ class LoginViewController: UIViewController {
         
         let controller = storyboard!.instantiateViewController(withIdentifier: "StudentTabController") 
         present(controller, animated: true, completion: nil)
+        self.activityView.stopAnimating()
     }
     
     /*

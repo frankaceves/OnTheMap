@@ -21,6 +21,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="bz7-b4-CWZ">
+                                <rect key="frame" x="169" y="57" width="37" height="37"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="color" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="jN9-C3-3kP">
                                 <rect key="frame" x="0.0" y="120.5" width="375" height="426"/>
                                 <subviews>
@@ -102,11 +107,14 @@
                             <constraint firstItem="jN9-C3-3kP" firstAttribute="centerY" secondItem="Etb-Sh-Sds" secondAttribute="centerY" id="6Ed-y2-4Rg"/>
                             <constraint firstItem="q2r-HM-Siu" firstAttribute="trailing" secondItem="jN9-C3-3kP" secondAttribute="trailing" id="PU8-jg-nNB"/>
                             <constraint firstItem="jN9-C3-3kP" firstAttribute="leading" secondItem="q2r-HM-Siu" secondAttribute="leading" id="U2H-Nr-EkM"/>
+                            <constraint firstItem="jN9-C3-3kP" firstAttribute="top" secondItem="bz7-b4-CWZ" secondAttribute="bottom" constant="26.5" id="bTb-J7-9Jm"/>
+                            <constraint firstItem="bz7-b4-CWZ" firstAttribute="centerX" secondItem="q2r-HM-Siu" secondAttribute="centerX" id="dBJ-5J-2ll"/>
                             <constraint firstItem="jN9-C3-3kP" firstAttribute="centerX" secondItem="Etb-Sh-Sds" secondAttribute="centerX" id="yy6-sC-ZJA"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="q2r-HM-Siu"/>
                     </view>
                     <connections>
+                        <outlet property="activityView" destination="bz7-b4-CWZ" id="3C1-IY-CSe"/>
                         <outlet property="debugTextLabel" destination="Qyb-xo-VOg" id="881-Aq-OpQ"/>
                         <outlet property="loginButton" destination="ncz-8y-jvI" id="hEf-FZ-xPP"/>
                         <outlet property="passwordTextField" destination="h1F-ZY-LBa" id="y76-nc-atl"/>
