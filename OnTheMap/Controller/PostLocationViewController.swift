@@ -44,6 +44,14 @@ class PostLocationViewController: UIViewController {
             
             
             ParseClient.sharedInstance().findStudentLocation(location: userLocation, userURL: userURL, completionHandlerForFindStudentLocation: { (success, error) in
+                if error != nil {
+                    DispatchQueue.main.async {
+                        let alert = UIAlertController(title: "Could Not Find Location", message: error, preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
+                        self.present(alert, animated: true)
+                    }
+                }
+                
                 if success == true {
                     DispatchQueue.main.async {
                         

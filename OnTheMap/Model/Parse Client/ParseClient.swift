@@ -234,7 +234,7 @@ class ParseClient: NSObject {
     }
     
     // FIND STUDENT LOCATION
-    func findStudentLocation(location: String, userURL: String, completionHandlerForFindStudentLocation: @escaping (_ success: Bool, _ error: NSError?) -> Void) {
+    func findStudentLocation(location: String, userURL: String, completionHandlerForFindStudentLocation: @escaping (_ success: Bool, _ error: String?) -> Void) {
         print("user location: \(location) \nuser url: \(userURL)")
         forwardGeocodeLocationString(locationString: location) { (success, error) in
             if success == true {
@@ -243,22 +243,21 @@ class ParseClient: NSObject {
                 //if URL is valid, then execute completion handler
                 completionHandlerForFindStudentLocation(self.checkURLValidity(userURL: userURL), nil)
             } else {
-                completionHandlerForFindStudentLocation(false, NSError(domain: "findStudentLocation", code: 0, userInfo: nil))
+                completionHandlerForFindStudentLocation(false, error)
                 
             }
         }
     }
     
-    func forwardGeocodeLocationString(locationString: String, _ completionHandlerForGeocoder: @escaping (_ success: Bool, _ error: NSError?) -> Void) {
+    func forwardGeocodeLocationString(locationString: String, _ completionHandlerForGeocoder: @escaping (_ success: Bool, _ error: String?) -> Void) {
         CLGeocoder().geocodeAddressString(locationString) { (result, error) in
             if error != nil {
-                print(error!)
+                completionHandlerForGeocoder(false, "Please Enter a City, Address, Postal Code, or Intersection")
                 return
             }
             if let location = result, let coordinate = location[0].location?.coordinate {
                 self.userLat = coordinate.latitude
                 self.userLon = coordinate.longitude
-                //print("lat: \(self.userLat!), long: \(self.userLon!)")
                 completionHandlerForGeocoder(true, nil)
             }
         }
