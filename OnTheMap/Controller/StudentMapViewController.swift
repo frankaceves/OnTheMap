@@ -25,6 +25,9 @@ class StudentMapViewController: UIViewController, MKMapViewDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        //add activity indicator
+        let activityIndicator = UIViewController.activateSpinner(onView: self.mapView)
+        
         //clear annotations
         self.mapView.removeAnnotations(mapView.annotations)
         //
@@ -55,6 +58,7 @@ class StudentMapViewController: UIViewController, MKMapViewDelegate {
                 
                 DispatchQueue.main.async {
                     self.mapView.addAnnotations(annotations)
+                    UIViewController.deactivateSpinner(spinner: activityIndicator)
                 }
                 
                 
@@ -168,4 +172,29 @@ class StudentMapViewController: UIViewController, MKMapViewDelegate {
     }
     */
 
+}
+
+extension UIViewController {
+    class func activateSpinner(onView : UIView) -> UIView {
+        let spinnerView = UIView.init(frame: onView.bounds)
+        spinnerView.backgroundColor = UIColor.init(white: 0.10, alpha: 0.75)
+        
+        let ai = UIActivityIndicatorView.init(activityIndicatorStyle: .whiteLarge)
+        
+        ai.startAnimating()
+        ai.center = spinnerView.center
+        
+        DispatchQueue.main.async {
+            spinnerView.addSubview(ai)
+            onView.addSubview(spinnerView)
+        }
+        
+        return spinnerView
+    }
+    
+    class func deactivateSpinner(spinner :UIView) {
+        DispatchQueue.main.async {
+            spinner.removeFromSuperview()
+        }
+    }
 }
