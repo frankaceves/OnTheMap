@@ -41,7 +41,7 @@ class PostLocationViewController: UIViewController {
             //execute function to check validity of url?
             
             //enable activity indicator while geocoding
-            
+            let activityView = UIViewController.activateSpinner(onView: self.view)
             
             ParseClient.sharedInstance().findStudentLocation(location: userLocation, userURL: userURL, completionHandlerForFindStudentLocation: { (success, error) in
                 if error != nil {
@@ -49,6 +49,7 @@ class PostLocationViewController: UIViewController {
                         let alert = UIAlertController(title: "Could Not Find Location", message: error, preferredStyle: .alert)
                         alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
                         self.present(alert, animated: true)
+                        UIViewController.deactivateSpinner(spinner: activityView)
                     }
                 }
                 
@@ -57,6 +58,7 @@ class PostLocationViewController: UIViewController {
                         
                         let controller = self.storyboard!.instantiateViewController(withIdentifier: "PostConfirmationViewController")
                         self.present(controller, animated: true, completion: nil)
+                        UIViewController.deactivateSpinner(spinner: activityView)
                     }
                 }
             })
