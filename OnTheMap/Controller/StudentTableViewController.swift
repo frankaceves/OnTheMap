@@ -63,11 +63,15 @@ class StudentTableViewController: UITableViewController {
     
     @IBAction func reloadStudentInfo() {
         print("reload pressed in student table")
+        //add activity indicator
+        let activityIndicator = UIViewController.activateSpinner(onView: self.tableView)
+        
         ParseClient.sharedInstance().getStudentInfo { (results, error) in
             if let results = results {
                 self.students = results
                 
                 DispatchQueue.main.async {
+                    UIViewController.deactivateSpinner(spinner: activityIndicator)
                     self.studentTableView.reloadData()
                 }
             } else {
