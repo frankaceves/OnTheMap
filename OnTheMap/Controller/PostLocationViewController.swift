@@ -17,7 +17,6 @@ class PostLocationViewController: UIViewController {
     // MARK: - LIFE CYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("storyboard info: \(self.description)")
         // Do any additional setup after loading the view.
     }
 
@@ -31,16 +30,19 @@ class PostLocationViewController: UIViewController {
     }
     
     @IBAction func findLocation(_ sender: UIButton) {
-        //disable UI
+        
         if locationStringTextField.text!.isEmpty || urlTextField.text!.isEmpty {
-            print("location and url are required!")
-            //enable UI
+            let alert = UIAlertController(title: nil, message: "Location & URL are required!", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true)
+            
+            
         } else {
             let userLocation = locationStringTextField.text!
             let userURL = urlTextField.text!
             //execute function to check validity of url?
             
-            //enable activity indicator while geocoding
+            
             let activityView = UIViewController.activateSpinner(onView: self.view)
             
             ParseClient.sharedInstance().findStudentLocation(location: userLocation, userURL: userURL, completionHandlerForFindStudentLocation: { (success, error) in
@@ -62,11 +64,6 @@ class PostLocationViewController: UIViewController {
                     }
                 }
             })
-            //if results are present, instantiate a new VC.
-                //get mapString
-                //geocode into lat/long
-                //present another map view?
-                //confirm location, which calls parse function
         }
     }
     /*
