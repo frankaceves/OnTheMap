@@ -49,7 +49,6 @@ struct StudentInformation {
         
         // iterate through array of dictionaries, each student is a dictionary
         for result in results {
-            // IF LET RESULT CONTAINS NIL, RETURN?
             if let result = StudentInformation(dictionary: result) {
                 students.append(result)
             }
