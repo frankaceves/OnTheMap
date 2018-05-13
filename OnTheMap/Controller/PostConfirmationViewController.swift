@@ -93,7 +93,7 @@ class PostConfirmationViewController: UIViewController, MKMapViewDelegate {
                 }
                 
                 if success == true {
-                    print("update success")
+                    
                     DispatchQueue.main.async {
                         self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
                     }
@@ -112,7 +112,7 @@ class PostConfirmationViewController: UIViewController, MKMapViewDelegate {
             }
             
             if success == true {
-                //print("POST success")
+                
                 DispatchQueue.main.async {
                     self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
                 }
