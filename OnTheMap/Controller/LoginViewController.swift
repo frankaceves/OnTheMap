@@ -35,9 +35,7 @@ class LoginViewController: UIViewController {
     
     @IBAction func signUpPressed(_ sender: Any) {
         let url = URL(string: "https://www.udacity.com/account/auth#!/signup")!
-        UIApplication.shared.open(url, options: [:]) { (success) in
-            //
-        }
+        UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
     
     @IBAction func loginPressed(_ sender: UIButton) {
@@ -49,7 +47,7 @@ class LoginViewController: UIViewController {
             //enable UI
         } else {
             //disable UI
-            //execute login request function
+            
             activityView.startAnimating()
             let username = usernameTextField.text!
             let password = passwordTextField.text!
@@ -58,12 +56,10 @@ class LoginViewController: UIViewController {
                 if success {
                     UdacityClient.sharedInstance().getPublicData()
                     DispatchQueue.main.async {
-                        
                         self.completeLogin()
-                        //self.activityView.stopAnimating()
+                        
                     }
                 } else {
-                    //print("error with login request in LoginPressed func, LoginVC.swift")
                     DispatchQueue.main.async {
                         self.activityView.stopAnimating()
                         let alert = UIAlertController(title: "Login Failed", message: error, preferredStyle: .alert)
