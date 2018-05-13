@@ -25,14 +25,14 @@ class StudentMapViewController: UIViewController, MKMapViewDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //add activity indicator
+        
         let activityIndicator = UIViewController.activateSpinner(onView: self.mapView)
         
         //clear annotations
         self.mapView.removeAnnotations(mapView.annotations)
-        //
+        
         ParseClient.sharedInstance().getStudentInfo { (results, error) in
-            print("---GetStudentInfo called---")
+            //print("---GetStudentInfo called---")
             if error != nil {
                 DispatchQueue.main.async {
                     let alert = UIAlertController(title: "DOWNLOAD ERROR", message: error, preferredStyle: .alert)
@@ -118,8 +118,6 @@ class StudentMapViewController: UIViewController, MKMapViewDelegate {
     }
     
     @IBAction func reloadStudentInfo() {
-        print("reload pressed in student Map")
-        // reload map view
         self.viewWillAppear(true)
         
     }
@@ -138,9 +136,9 @@ class StudentMapViewController: UIViewController, MKMapViewDelegate {
     }
     
     @IBAction private func postLocationPressed() {
-        //when button clicked, check for object ID
+        
         ParseClient.sharedInstance().checkForObjectId(UdacityClient.Constants.studentKey) { (success) in
-            //if no objectID, instantiate PostLocationVC
+            
             if !success {
                 let controller = self.storyboard!.instantiateViewController(withIdentifier: "PostLocationViewController") as UIViewController
                 self.present(controller, animated: true, completion: nil)
@@ -164,7 +162,6 @@ class StudentMapViewController: UIViewController, MKMapViewDelegate {
         if control == view.rightCalloutAccessoryView {
             let app = UIApplication.shared
             if let toOpen = view.annotation?.subtitle! {
-                //app.openURL(URL(string: toOpen)!)
                 let url = URL(string: toOpen)!
                 app.open(url, options: [:], completionHandler: nil)
             }
