@@ -33,6 +33,15 @@ class StudentMapViewController: UIViewController, MKMapViewDelegate {
         //
         ParseClient.sharedInstance().getStudentInfo { (results, error) in
             print("---GetStudentInfo called---")
+            if error != nil {
+                DispatchQueue.main.async {
+                    let alert = UIAlertController(title: "DOWNLOAD ERROR", message: error, preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
+                    self.present(alert, animated: true)
+                    UIViewController.deactivateSpinner(spinner: activityIndicator)
+                }
+            }
+            
             if let locations = results {
                 var annotations = [MKPointAnnotation]()
                 

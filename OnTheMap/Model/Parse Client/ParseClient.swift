@@ -24,7 +24,7 @@ class ParseClient: NSObject {
     
     
     
-    func getStudentInfo(_ completionHandlerfForGetStudentInfo: @escaping (_ result: [StudentInformation]?, _ error: NSError?) -> Void) {
+    func getStudentInfo(_ completionHandlerfForGetStudentInfo: @escaping (_ result: [StudentInformation]?, _ error: String?) -> Void) {
         //1.  set parameters
         //2.  create url
         //3.  configure request
@@ -39,14 +39,17 @@ class ParseClient: NSObject {
             
             guard (error == nil) else {
                 print("error in your request")
+                completionHandlerfForGetStudentInfo(nil, "Could Not Download Student Information.  Please Try Again Later.")
                 return
             }
             guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >= 200 && statusCode <= 299 else {
                 print("status code returned other than 2xx")
+                completionHandlerfForGetStudentInfo(nil, "Could Not Download Student Information.  Please Try Again Later.")
                 return
             }
             guard let data = data else {
                 print("no data returned")
+                completionHandlerfForGetStudentInfo(nil, "Could Not Download Student Information.  Please Try Again Later.")
                 return
             }
             //RAW JSON DATA
@@ -59,6 +62,7 @@ class ParseClient: NSObject {
                 parsedResults = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String:AnyObject]
             } catch {
                 print("error parsing data")
+                completionHandlerfForGetStudentInfo(nil, "Could Not Download Student Information.  Please Try Again Later.")
                 return
             }
             
@@ -67,7 +71,7 @@ class ParseClient: NSObject {
                 let students = StudentInformation.studentsFromResults(results)
                 completionHandlerfForGetStudentInfo(students, nil)
             } else {
-                completionHandlerfForGetStudentInfo(nil, NSError(domain: "student location", code: 0, userInfo: [NSLocalizedDescriptionKey:"could not parse student info into dictionary"]))
+                completionHandlerfForGetStudentInfo(nil, "Could Not Download Student Information.  Please Try Again Later.")
             }
             
             

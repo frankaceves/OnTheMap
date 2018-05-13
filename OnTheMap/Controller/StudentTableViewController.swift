@@ -34,6 +34,14 @@ class StudentTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         ParseClient.sharedInstance().getStudentInfo { (results, error) in
+            if error != nil {
+                DispatchQueue.main.async {
+                    let alert = UIAlertController(title: "DOWNLOAD ERROR", message: error, preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
+                    self.present(alert, animated: true)
+                }
+            }
+            
             if let results = results {
                 self.students = results
 
@@ -67,6 +75,15 @@ class StudentTableViewController: UITableViewController {
         let activityIndicator = UIViewController.activateSpinner(onView: self.tableView)
         
         ParseClient.sharedInstance().getStudentInfo { (results, error) in
+            if error != nil {
+                DispatchQueue.main.async {
+                    let alert = UIAlertController(title: "DOWNLOAD ERROR", message: error, preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
+                    self.present(alert, animated: true)
+                    UIViewController.deactivateSpinner(spinner: activityIndicator)
+                }
+            }
+            
             if let results = results {
                 self.students = results
                 
@@ -74,8 +91,6 @@ class StudentTableViewController: UITableViewController {
                     UIViewController.deactivateSpinner(spinner: activityIndicator)
                     self.studentTableView.reloadData()
                 }
-            } else {
-                print(error!)
             }
         }
     }
