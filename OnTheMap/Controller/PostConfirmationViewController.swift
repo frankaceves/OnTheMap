@@ -84,6 +84,14 @@ class PostConfirmationViewController: UIViewController, MKMapViewDelegate {
         if let id = ParseClient.sharedInstance().objectID  {
     
             ParseClient.sharedInstance().updateStudentInfo(objectID: id, { (success, error) in
+                if error != nil {
+                    DispatchQueue.main.async {
+                        let alert = UIAlertController(title: "UPDATE ERROR", message: error, preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
+                        self.present(alert, animated: true)
+                    }
+                }
+                
                 if success == true {
                     print("update success")
                     DispatchQueue.main.async {
@@ -95,6 +103,14 @@ class PostConfirmationViewController: UIViewController, MKMapViewDelegate {
         
         
         ParseClient.sharedInstance().postLocation { (success, error) in
+            if error != nil {
+                DispatchQueue.main.async {
+                    let alert = UIAlertController(title: "POSTING ERROR", message: error, preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
+                    self.present(alert, animated: true)
+                }
+            }
+            
             if success == true {
                 //print("POST success")
                 DispatchQueue.main.async {

@@ -126,7 +126,7 @@ class ParseClient: NSObject {
         task.resume()
     }
     // POST STUDENT INFO
-    func postLocation(_ completionHandlerfForPostLocation: @escaping (_ success: Bool, _ error: NSError?) -> Void) {
+    func postLocation(_ completionHandlerfForPostLocation: @escaping (_ success: Bool, _ error: String?) -> Void) {
         let lat = Float(ParseClient.sharedInstance().userLat)
         let lon = Float(ParseClient.sharedInstance().userLon)
         
@@ -148,18 +148,19 @@ class ParseClient: NSObject {
             
             guard let data = data else {
                 print("no data returned")
+                completionHandlerfForPostLocation(false, "Could Not Post Student Location")
                 return
             }
             //print(String(data: data, encoding: .utf8)!)
             
             guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >= 200 && statusCode <= 299 else {
                 print("status code returned other than 2xx")
-                print(response as AnyObject)
+                completionHandlerfForPostLocation(false, "Could Not Post Student Location")
                 return
             }
             
             guard let parsedResults = try! JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: AnyObject] else {
-                print("parse query error")
+                completionHandlerfForPostLocation(false, "Could Not Post Student Location")
                 return
             }
             //print(parsedResults)
@@ -168,7 +169,8 @@ class ParseClient: NSObject {
                 self.objectID = objectID
                 print("new object ID: \(self.objectID!)")
                 completionHandlerfForPostLocation(true, nil)
-                
+            } else {
+                completionHandlerfForPostLocation(false, "Could Not Post Student Location")
             }
             
 
@@ -177,7 +179,7 @@ class ParseClient: NSObject {
     }
     
     // UPDATE STUDENT INFO
-    func updateStudentInfo(objectID: String, _ completionHandlerfForUpdateStudentInfo: @escaping (_ success: Bool, _ error: NSError?) -> Void) {
+    func updateStudentInfo(objectID: String, _ completionHandlerfForUpdateStudentInfo: @escaping (_ success: Bool, _ error: String?) -> Void) {
         
         let urlString = "https://parse.udacity.com/parse/classes/StudentLocation/\(objectID)"
         let url = URL(string: urlString)
@@ -194,17 +196,20 @@ class ParseClient: NSObject {
             }
             guard let data = data else {
                 print("no data returned")
+                completionHandlerfForUpdateStudentInfo(false, "Could Not Update Student Information.")
                 return
             }
             
             guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >= 200 && statusCode <= 299 else {
                 print("status code returned other than 2xx")
-                print(response as AnyObject)
+                completionHandlerfForUpdateStudentInfo(false, "Could Not Update Student Information.")
+                //print(response as AnyObject)
                 return
             }
             
             guard let parsedResults = try! JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: AnyObject] else {
                 print("parse query error")
+                completionHandlerfForUpdateStudentInfo(false, "Could Not Update Student Information.")
                 return
             }
             
@@ -215,7 +220,7 @@ class ParseClient: NSObject {
                 completionHandlerfForUpdateStudentInfo(true, nil)
             } else {
             // if no results, completion (false, error)
-                completionHandlerfForUpdateStudentInfo(false, nil)
+                completionHandlerfForUpdateStudentInfo(false, "Could Not Update Student Information.")
             }
             
         }
