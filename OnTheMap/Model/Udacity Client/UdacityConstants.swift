@@ -36,17 +36,9 @@ extension UdacityClient {
     struct Methods {
         
         // MARK: Account
-        static let Account = "/account"
-        static let AccountIDFavoriteMovies = "/account/{id}/favorite/movies"
-        static let AccountIDFavorite = "/account/{id}/favorite"
-        
-        // MARK: Authentication
-        static let AuthenticationTokenNew = "/authentication/token/new"
-        
-        // MARK: Search
-        static let SearchMovie = "/search/movie"
-        
-        // MARK: Config
+        static let Login = "" //post session https://www.udacity.com/api/session
+        static let Logout = "" //delete session; https://www.udacity.com/api/session
+        static let GetUserData = "" // https://www.udacity.com/api/users/<user_id>
         
         
     }
