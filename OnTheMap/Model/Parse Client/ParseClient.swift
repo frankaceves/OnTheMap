@@ -66,7 +66,7 @@ class ParseClient: NSObject {
                 return
             }
             
-            //print(parsedResults)
+            
             if let results = parsedResults["results"] as? [[String:AnyObject]] {
                 let students = StudentInformation.studentsFromResults(results)
                 completionHandlerfForGetStudentInfo(students, nil)
@@ -76,7 +76,7 @@ class ParseClient: NSObject {
             
             
             
-            //    6.  use the data (assign data to local properties)
+            
             
         }
         //    7.  Start Request (task.resume)
@@ -85,7 +85,7 @@ class ParseClient: NSObject {
     }
     
     func checkForObjectId(_ uniqueKey: String, _ completionHandlerfForCheckForObjectId: @escaping (_ result: Bool) -> Void) { //params UniqueKey from parseClient Constant
-        //let uniqueKey = "5401038719"
+        
         
         var urlString = "https://parse.udacity.com/parse/classes/StudentLocation"
         urlString.append("?where=%7B%22uniqueKey%22%3A%22\(uniqueKey)%22%7D")
@@ -95,17 +95,17 @@ class ParseClient: NSObject {
         request.addValue("QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY", forHTTPHeaderField: "X-Parse-REST-API-Key")
         let session = URLSession.shared
         let task = session.dataTask(with: request) { data, response, error in
-            if error != nil { // Handle error
+            if error != nil {
                 return
             }
             //print(String(data: data!, encoding: .utf8)!)
             
-            //var parsedResults: [String:AnyObject]!
+            
             guard let parsedResults = try! JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? [String: AnyObject] else {
                 print("parse query error")
                 return
             }
-            //print(parsedResults)
+            
             
             guard let results = parsedResults["results"] as? [[String: AnyObject]] else {
                 print("no results")
@@ -115,7 +115,7 @@ class ParseClient: NSObject {
             if results.isEmpty {
                 completionHandlerfForCheckForObjectId(false)
             }
-            //print(results)
+            
             for result in results {
                 
                 if let objectID = result["objectId"] as? String { //insert objectID from parseClient constants.
@@ -167,7 +167,7 @@ class ParseClient: NSObject {
                 completionHandlerfForPostLocation(false, "Could Not Post Student Location")
                 return
             }
-            //print(parsedResults)
+            
             
             if let objectID = parsedResults["objectId"] as? String {
                 self.objectID = objectID
@@ -195,7 +195,7 @@ class ParseClient: NSObject {
         request.httpBody = "{\"uniqueKey\": \"\(UdacityClient.Constants.studentKey)\", \"firstName\": \"\(UdacityClient.Constants.firstName)\", \"lastName\": \"\(UdacityClient.Constants.lastName)\",\"mapString\": \"\(self.locationString!)\", \"mediaURL\": \"\(self.userURL!)\",\"latitude\": \(Float(self.userLat!)), \"longitude\": \(Float(self.userLon!))}".data(using: .utf8)
         let session = URLSession.shared
         let task = session.dataTask(with: request) { data, response, error in
-            if error != nil { // Handle error…
+            if error != nil {
                 return
             }
             guard let data = data else {
@@ -207,7 +207,7 @@ class ParseClient: NSObject {
             guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >= 200 && statusCode <= 299 else {
                 print("status code returned other than 2xx")
                 completionHandlerfForUpdateStudentInfo(false, "Could Not Update Student Information.")
-                //print(response as AnyObject)
+                
                 return
             }
             
