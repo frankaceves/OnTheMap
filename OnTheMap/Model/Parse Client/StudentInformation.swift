@@ -19,7 +19,7 @@ struct StudentInformation {
     let studentUniqueKey : String?
     
     init?(dictionary: [String:AnyObject]) {
-        //make sure dictionary keys have values
+        //GUARD STATEMENT RECOMMENDED BY FORUM MENTOR
         guard
         let studentFirstName = dictionary[ParseClient.JSONResponseKeys.FirstName] as? String,
         let studentLastName = dictionary[ParseClient.JSONResponseKeys.LastName] as? String,
