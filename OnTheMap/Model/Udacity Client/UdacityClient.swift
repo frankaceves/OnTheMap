@@ -10,13 +10,11 @@ import UIKit
 
 class UdacityClient: NSObject {
     // MARK: Properties
-    // do we need these Strings?
-    var udacityUserName: String!
-    var udacityPassword: String!
+    
     // shared session
     var session = URLSession.shared
     
-    //TODO: execute login api function
+    // MARK: LOGIN FUNCTION
     func loginRequest(username: String, password: String, completionHandlerForLogin: @escaping (_ success: Bool, _ sessionID: String?, _ errorString: String?) -> Void) { //eventually add parameters to take username and password, and add them to request body
         
         var request = URLRequest(url: URL(string: "https://www.udacity.com/api/session")!)
@@ -51,13 +49,12 @@ class UdacityClient: NSObject {
             do {
                 parsedResults = try JSONSerialization.jsonObject(with: newData!, options: .allowFragments) as? [String: AnyObject]
             } catch {
-                
                 print("error parsing results")
                 return
             }
             
             guard let sessionInfo = parsedResults["session"] else {
-                //print("sessionInfo error")
+                print("sessionInfo error")
                 completionHandlerForLogin(false, nil, "Session Info Error")
                 return
             }
@@ -68,14 +65,11 @@ class UdacityClient: NSObject {
             }
             
             if let studentKey = account["key"] as? String {
-                
                 Constants.studentKey = studentKey
-                //print("studentKey = \(Constants.studentKey)")
             }
             
             if let sessionID = sessionInfo["id"] as? String {
             //if data returned contains a session ID, instantiate new view controller
-                
                 completionHandlerForLogin(true, "sessionID: \(sessionID)", nil)
             } else {
                 //print("sessionID error")
@@ -87,7 +81,7 @@ class UdacityClient: NSObject {
         task.resume()
     }
     
-    //TODO: execute logout api function
+    // MARK: LOGOUT FUNCTION
     
     func logoutRequest(completionHandlerForLogout: @escaping (_ success: Bool, _ error: String?) -> Void) {
         var request = URLRequest(url: URL(string: "https://www.udacity.com/api/session")!)
