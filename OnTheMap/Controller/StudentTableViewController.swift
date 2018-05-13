@@ -56,22 +56,11 @@ class StudentTableViewController: UITableViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        // create and set the logout button
-//        parent!.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "LOGOUT", style: .plain, target: self, action: #selector(logout))
-        
-        // create and set the reload button
-        //parent!.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "RELOAD", style: .plain, target: self, action: #selector(reloadStudentInfo))
-//        parent!.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(reloadStudentInfo))
-//        let reloadButton = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(reloadStudentInfo))
-//
-//        let postButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(postLocation))
-//        parent!.navigationItem.rightBarButtonItems = [reloadButton, postButton]
     }
     
     @IBAction func reloadStudentInfo() {
         print("reload pressed in student table")
-        //add activity indicator
+        
         let activityIndicator = UIViewController.activateSpinner(onView: self.tableView)
         
         ParseClient.sharedInstance().getStudentInfo { (results, error) in
@@ -111,14 +100,13 @@ class StudentTableViewController: UITableViewController {
         //when button clicked, check for object ID
         ParseClient.sharedInstance().checkForObjectId(UdacityClient.Constants.studentKey) { (success) in
             if !success {
-                //if no objectID, instantiate PostLocationVC
+                
                 let controller = self.storyboard!.instantiateViewController(withIdentifier: "PostLocationViewController") as UIViewController
                 self.present(controller, animated: true, completion: nil)
             } else {
-                //if objectID exists, notification for overwrite
+                
                 let alert = UIAlertController(title: nil, message: "User \"\(UdacityClient.Constants.firstName) \(UdacityClient.Constants.lastName)\" has already posted a Student Location. Would you like to overwrite their location?", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "Overwrite", style: .default, handler: { action in
-                    print("overwrite pressed")
                     let controller = self.storyboard!.instantiateViewController(withIdentifier: "PostLocationViewController") as UIViewController
                     self.present(controller, animated: true, completion: nil)
                 }))
@@ -168,7 +156,7 @@ class StudentTableViewController: UITableViewController {
         } else {
             cell?.textLabel!.text = "Student Name Unknown"
         }
-        //account for "" entered as first & last name
+        
         
         // URL
         if let url = student.studentMediaURL, url != "" {
@@ -184,8 +172,7 @@ class StudentTableViewController: UITableViewController {
         let student = students[(indexPath as NSIndexPath).row]
         if let studentURLstring = student.studentMediaURL, let studentURL = URL(string: studentURLstring) {
             if UIApplication.shared.canOpenURL(studentURL) {
-                UIApplication.shared.open(studentURL, options: [:]) { (success) in
-                }
+                UIApplication.shared.open(studentURL, options: [:], completionHandler: nil)
             } else {
                 print("this url is not valid")
             }
