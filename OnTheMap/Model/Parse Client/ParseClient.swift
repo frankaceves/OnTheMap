@@ -79,11 +79,12 @@ class ParseClient: NSObject {
             
             
         }
-        //    7.  Start Request (task.resume)
+        //    7.  Start Request
         task1.resume()
         
     }
     
+    // MARK: CHECK FOR OBJECT ID
     func checkForObjectId(_ uniqueKey: String, _ completionHandlerfForCheckForObjectId: @escaping (_ result: Bool) -> Void) { //params UniqueKey from parseClient Constant
         
         
@@ -119,9 +120,9 @@ class ParseClient: NSObject {
             for result in results {
                 
                 if let objectID = result["objectId"] as? String { //insert objectID from parseClient constants.
-                    print("objectID = \(objectID)")
+                    //print("objectID = \(objectID)")
                     self.objectID = objectID
-                    print(result as AnyObject)
+                    //print(result as AnyObject)
                     completionHandlerfForCheckForObjectId(true)
                     
                 }
@@ -129,7 +130,7 @@ class ParseClient: NSObject {
         }
         task.resume()
     }
-    // POST STUDENT INFO
+    // MARK: POST STUDENT INFO
     func postLocation(_ completionHandlerfForPostLocation: @escaping (_ success: Bool, _ error: String?) -> Void) {
         let lat = Float(ParseClient.sharedInstance().userLat)
         let lon = Float(ParseClient.sharedInstance().userLon)
@@ -171,7 +172,7 @@ class ParseClient: NSObject {
             
             if let objectID = parsedResults["objectId"] as? String {
                 self.objectID = objectID
-                print("new object ID: \(self.objectID!)")
+                //print("new object ID: \(self.objectID!)")
                 completionHandlerfForPostLocation(true, nil)
             } else {
                 completionHandlerfForPostLocation(false, "Could Not Post Student Location")
@@ -233,7 +234,7 @@ class ParseClient: NSObject {
     
     private func checkURLValidity(userURL: String?) -> Bool {
         if let urlString = userURL, let url = URL(string: urlString)  {
-            print("can open URL: \(UIApplication.shared.canOpenURL(url))")
+            //print("can open URL: \(UIApplication.shared.canOpenURL(url))")
             if UIApplication.shared.canOpenURL(url) == true {
                 self.userURL = userURL
                 return true
@@ -244,7 +245,7 @@ class ParseClient: NSObject {
     
     // FIND STUDENT LOCATION
     func findStudentLocation(location: String, userURL: String, completionHandlerForFindStudentLocation: @escaping (_ success: Bool, _ error: String?) -> Void) {
-        print("user location: \(location) \nuser url: \(userURL)")
+        
         forwardGeocodeLocationString(locationString: location) { (success, error) in
             if success == true {
                 self.locationString = location
