@@ -9,6 +9,8 @@
 import Foundation
 import UIKit
 
+// ACTIVITY INDICATOR CODE derived from here: http://brainwashinc.com/2017/07/21/loading-activity-indicator-ios-swift/
+
 extension UIViewController {
     class func activateSpinner(onView : UIView) -> UIView {
         let spinnerView = UIView.init(frame: onView.bounds)
