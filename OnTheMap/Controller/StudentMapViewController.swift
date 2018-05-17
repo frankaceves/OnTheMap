@@ -160,13 +160,30 @@ class StudentMapViewController: UIViewController, MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         if control == view.rightCalloutAccessoryView {
-            let app = UIApplication.shared
-            if let toOpen = view.annotation?.subtitle! {
-                let url = URL(string: toOpen)!
-                app.open(url, options: [:], completionHandler: nil)
+            //let app = UIApplication.shared
+//            if let toOpen = view.annotation?.subtitle! {
+//                let url = URL(string: toOpen)!
+//                app.open(url, options: [:], completionHandler: nil)
+            if let studentURLstring = view.annotation?.subtitle!, let studentURL = URL(string: studentURLstring) {
+                if UIApplication.shared.canOpenURL(studentURL) {
+                    UIApplication.shared.open(studentURL, options: [:], completionHandler: nil)
+                }
+            } else {
+                let alert = UIAlertController(title: "Invalid Link", message: "This link cannot be opened.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
+                self.present(alert, animated: true)
             }
         }
     }
+    
+//    if let studentURLstring = student.studentMediaURL, let studentURL = URL(string: studentURLstring) {
+//        if UIApplication.shared.canOpenURL(studentURL) {
+//            UIApplication.shared.open(studentURL, options: [:], completionHandler: nil)
+//        } else {
+//            print("this url is not valid")
+//        }
+//    }
+    
     
     /*
     // MARK: - Navigation
