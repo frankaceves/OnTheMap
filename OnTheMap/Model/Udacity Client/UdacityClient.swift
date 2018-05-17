@@ -28,7 +28,7 @@ class UdacityClient: NSObject {
         
         let task = session.dataTask(with: request) { data, response, error in
             if error != nil { // Handle error…
-                completionHandlerForLogin(false, nil, "invalid credentials")
+                completionHandlerForLogin(false, nil, error!.localizedDescription)
                 return
             }
             
