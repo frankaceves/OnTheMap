@@ -249,9 +249,13 @@ class ParseClient: NSObject {
         forwardGeocodeLocationString(locationString: location) { (success, error) in
             if success == true {
                 self.locationString = location
-                //instead of completion handler here, verify URL validity,
-                //if URL is valid, then execute completion handler
-                completionHandlerForFindStudentLocation(self.checkURLValidity(userURL: userURL), nil)
+
+                if self.checkURLValidity(userURL: userURL) == true {
+                    completionHandlerForFindStudentLocation(true, nil)
+                } else {
+                    //print(error)
+                    completionHandlerForFindStudentLocation(false, "Please enter a valid URL with https://")
+                }
             } else {
                 completionHandlerForFindStudentLocation(false, error)
                 
