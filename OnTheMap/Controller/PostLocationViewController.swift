@@ -62,6 +62,13 @@ class PostLocationViewController: UIViewController {
                         self.present(controller, animated: true, completion: nil)
                         UIViewController.deactivateSpinner(spinner: activityView)
                     }
+                } else {
+                    DispatchQueue.main.async {
+                        let alert = UIAlertController(title: "Invalid URL", message: error, preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
+                        self.present(alert, animated: true)
+                        UIViewController.deactivateSpinner(spinner: activityView)
+                    }
                 }
             })
         }
