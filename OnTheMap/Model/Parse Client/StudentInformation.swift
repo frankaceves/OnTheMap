@@ -50,7 +50,12 @@ struct StudentInformation {
         // iterate through array of dictionaries, each student is a dictionary
         for result in results {
             if let result = StudentInformation(dictionary: result) {
-                students.append(result)
+                if students.count < 100 {
+                    students.append(result)
+                } else {
+                    return students
+                }
+                
             }
         }
         return students
