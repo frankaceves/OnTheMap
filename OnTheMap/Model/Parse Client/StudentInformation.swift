@@ -11,8 +11,8 @@ import Foundation
 struct StudentInformation {
     let studentFirstName : String?
     let studentLastName : String?
-    let studentLatitude : Float?
-    let studentlongitude : Float?
+    let studentLatitude : Double?
+    let studentlongitude : Double?
     let locationMapString : String?
     let studentMediaURL: String?
     let studentObjectId : String?
@@ -23,8 +23,8 @@ struct StudentInformation {
         guard
         let studentFirstName = dictionary[ParseClient.JSONResponseKeys.FirstName] as? String,
         let studentLastName = dictionary[ParseClient.JSONResponseKeys.LastName] as? String,
-        let studentLatitude = dictionary[ParseClient.JSONResponseKeys.Latitude] as? Float,
-        let studentlongitude = dictionary[ParseClient.JSONResponseKeys.Longitude] as? Float,
+        let studentLatitude = dictionary[ParseClient.JSONResponseKeys.Latitude] as? Double,
+        let studentlongitude = dictionary[ParseClient.JSONResponseKeys.Longitude] as? Double,
         let locationMapString = dictionary[ParseClient.JSONResponseKeys.MapString] as? String,
         let studentMediaURL = dictionary[ParseClient.JSONResponseKeys.URL] as? String,
         let studentObjectId = dictionary[ParseClient.JSONResponseKeys.ObjectID] as? String,
