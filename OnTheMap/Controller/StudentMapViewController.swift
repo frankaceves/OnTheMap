@@ -167,6 +167,10 @@ class StudentMapViewController: UIViewController, MKMapViewDelegate {
             if let studentURLstring = view.annotation?.subtitle!, let studentURL = URL(string: studentURLstring) {
                 if UIApplication.shared.canOpenURL(studentURL) {
                     UIApplication.shared.open(studentURL, options: [:], completionHandler: nil)
+                } else {
+                    let alert = UIAlertController(title: "Invalid Link", message: "This link cannot be opened.", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
+                    self.present(alert, animated: true)
                 }
             } else {
                 let alert = UIAlertController(title: "Invalid Link", message: "This link cannot be opened.", preferredStyle: .alert)
