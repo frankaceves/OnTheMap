@@ -28,7 +28,7 @@ class ParseClient: NSObject {
         //1.  set parameters
         //2.  create url
         //3.  configure request
-        var request1 = URLRequest(url: URL(string: "https://parse.udacity.com/parse/classes/StudentLocation?order=-updatedAt")!)
+        var request1 = URLRequest(url: URL(string: "https://parse.udacity.com/parse/classes/StudentLocation?order=-updatedAt&limit=200")!)
         request1.addValue("QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr", forHTTPHeaderField: "X-Parse-Application-Id")
         request1.addValue("QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY", forHTTPHeaderField: "X-Parse-REST-API-Key")
         let session1 = URLSession.shared
@@ -39,17 +39,17 @@ class ParseClient: NSObject {
             
             guard (error == nil) else {
                 print("error in your request")
-                completionHandlerfForGetStudentInfo(nil, "Could Not Download Student Information.  Please Try Again Later.")
+                completionHandlerfForGetStudentInfo(nil, error!.localizedDescription)
                 return
             }
             guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >= 200 && statusCode <= 299 else {
-                print("status code returned other than 2xx")
-                completionHandlerfForGetStudentInfo(nil, "Could Not Download Student Information.  Please Try Again Later.")
+                //print("status code returned other than 2xx")
+                completionHandlerfForGetStudentInfo(nil, "The request returned other than 2xx.  Please Try Again Later.")
                 return
             }
             guard let data = data else {
-                print("no data returned")
-                completionHandlerfForGetStudentInfo(nil, "Could Not Download Student Information.  Please Try Again Later.")
+                //print("no data returned")
+                completionHandlerfForGetStudentInfo(nil, "No Data Returned.  Please Try Again Later.")
                 return
             }
             //RAW JSON DATA
@@ -61,8 +61,8 @@ class ParseClient: NSObject {
             do {
                 parsedResults = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String:AnyObject]
             } catch {
-                print("error parsing data")
-                completionHandlerfForGetStudentInfo(nil, "Could Not Download Student Information.  Please Try Again Later.")
+                //print("error parsing data")
+                completionHandlerfForGetStudentInfo(nil, "Error Parsing JSON Data.  Please Try Again Later.")
                 return
             }
             
@@ -71,7 +71,7 @@ class ParseClient: NSObject {
                 let students = StudentInformation.studentsFromResults(results)
                 completionHandlerfForGetStudentInfo(students, nil)
             } else {
-                completionHandlerfForGetStudentInfo(nil, "Could Not Download Student Information.  Please Try Again Later.")
+                completionHandlerfForGetStudentInfo(nil, "Error parsing 'Results' from JSON data.  Please Try Again Later.")
             }
             
             
