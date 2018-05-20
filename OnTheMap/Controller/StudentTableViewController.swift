@@ -174,8 +174,15 @@ class StudentTableViewController: UITableViewController {
             if UIApplication.shared.canOpenURL(studentURL) {
                 UIApplication.shared.open(studentURL, options: [:], completionHandler: nil)
             } else {
-                print("this url is not valid")
+                let alert = UIAlertController(title: "URL Won't Open", message: "This URL is Not Valid and Won't Open", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+                
             }
+        } else {
+            let alert = UIAlertController(title: "URL not valid", message: "Student's provided URL information contains illegal characters or spaces and will not open.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
         }
         
     }
