@@ -14,6 +14,7 @@
 		7C58C508206B35CC0086235B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C58C506206B35CC0086235B /* Main.storyboard */; };
 		7C58C50A206B35CC0086235B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C58C509206B35CC0086235B /* Assets.xcassets */; };
 		7C58C50D206B35CC0086235B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C58C50B206B35CC0086235B /* LaunchScreen.storyboard */; };
+		7C6C8E2720B0E1470079AC44 /* LocationTextDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6C8E2620B0E1470079AC44 /* LocationTextDelegate.swift */; };
 		7C7014D120726F3C0082F642 /* UdacityClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7014D020726F3C0082F642 /* UdacityClient.swift */; };
 		7CA95B20206D3331002FED84 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA95B1F206D3331002FED84 /* LoginViewController.swift */; };
 		7CAD5EFB206DD96400A11B46 /* UdacityConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CAD5EFA206DD96400A11B46 /* UdacityConstants.swift */; };
@@ -34,6 +35,7 @@
 		7C58C509206B35CC0086235B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7C58C50C206B35CC0086235B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7C58C50E206B35CC0086235B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7C6C8E2620B0E1470079AC44 /* LocationTextDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTextDelegate.swift; sourceTree = "<group>"; };
 		7C7014D020726F3C0082F642 /* UdacityClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UdacityClient.swift; sourceTree = "<group>"; };
 		7CA95B1F206D3331002FED84 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		7CAD5EFA206DD96400A11B46 /* UdacityConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UdacityConstants.swift; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				7CE37EC720A79CC400EEDDF5 /* activityIndicator.swift */,
+				7C6C8E2620B0E1470079AC44 /* LocationTextDelegate.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -217,6 +220,7 @@
 				7C28263F20878AA7004E37A7 /* PostLocationViewController.swift in Sources */,
 				7CB7DECD207AE48700F42BA3 /* StudentInformation.swift in Sources */,
 				7CAD5EFB206DD96400A11B46 /* UdacityConstants.swift in Sources */,
+				7C6C8E2720B0E1470079AC44 /* LocationTextDelegate.swift in Sources */,
 				7CB7DEC9207ACBE900F42BA3 /* ParseConstants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
