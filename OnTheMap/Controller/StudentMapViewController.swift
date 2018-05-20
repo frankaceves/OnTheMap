@@ -164,22 +164,37 @@ class StudentMapViewController: UIViewController, MKMapViewDelegate {
 //            if let toOpen = view.annotation?.subtitle! {
 //                let url = URL(string: toOpen)!
 //                app.open(url, options: [:], completionHandler: nil)
-            if let studentURLstring = view.annotation?.subtitle!, let studentURL = URL(string: studentURLstring) {
-                if UIApplication.shared.canOpenURL(studentURL) {
-                    UIApplication.shared.open(studentURL, options: [:], completionHandler: nil)
-                } else {
-                    let alert = UIAlertController(title: "Invalid Link", message: "This link cannot be opened.", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
-                    self.present(alert, animated: true)
-                }
+//            if let studentURLstring = view.annotation?.subtitle!, let studentURL = URL(string: studentURLstring) {
+//                if UIApplication.shared.canOpenURL(studentURL) {
+//                    UIApplication.shared.open(studentURL, options: [:], completionHandler: nil)
+//                } else {
+//                    let alert = UIAlertController(title: "Invalid Link", message: "This link cannot be opened.", preferredStyle: .alert)
+//                    alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
+//                    self.present(alert, animated: true)
+//                }
+//            } else {
+//                let alert = UIAlertController(title: "Invalid Link", message: "This link cannot be opened.", preferredStyle: .alert)
+//                alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
+//                self.present(alert, animated: true)
+//            }
+//        }
+        
+        if let studentURLstring = view.annotation?.subtitle!, let studentURL = URL(string: studentURLstring) {
+            if UIApplication.shared.canOpenURL(studentURL) {
+                UIApplication.shared.open(studentURL, options: [:], completionHandler: nil)
             } else {
-                let alert = UIAlertController(title: "Invalid Link", message: "This link cannot be opened.", preferredStyle: .alert)
+                let alert = UIAlertController(title: "URL Won't Open", message: "This URL is Not Valid and Won't Open", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
-                self.present(alert, animated: true)
+                self.present(alert, animated: true, completion: nil)
+                
             }
+        } else {
+            let alert = UIAlertController(title: "URL not valid", message: "Student's provided URL information contains illegal characters or spaces and will not open.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
         }
     }
-    
+    }
 //    if let studentURLstring = student.studentMediaURL, let studentURL = URL(string: studentURLstring) {
 //        if UIApplication.shared.canOpenURL(studentURL) {
 //            UIApplication.shared.open(studentURL, options: [:], completionHandler: nil)
