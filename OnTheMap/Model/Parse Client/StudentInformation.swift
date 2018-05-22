@@ -45,16 +45,15 @@ struct StudentInformation {
     // - MARK: METHODS
     static func studentsFromResults(_ results: [[String:AnyObject]]) -> [StudentInformation] {
         
-        //var students = [StudentInformation]()
-        var students = StudentDataInfo.sharedInstance().students
-        
+        var students = [StudentInformation]()
         // iterate through array of dictionaries, each student is a dictionary
         for result in results {
             if let result = StudentInformation(dictionary: result) {
                 if students.count < 100 {
                     students.append(result)
                 } else {
-                    return students
+                    StudentDataInfo.sharedInstance().students = students
+                    return StudentDataInfo.sharedInstance().students
                 }
                 
             }
