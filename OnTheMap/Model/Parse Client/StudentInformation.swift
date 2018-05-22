@@ -45,7 +45,8 @@ struct StudentInformation {
     // - MARK: METHODS
     static func studentsFromResults(_ results: [[String:AnyObject]]) -> [StudentInformation] {
         
-        var students = [StudentInformation]()
+        //var students = [StudentInformation]()
+        var students = StudentDataInfo.sharedInstance().students
         
         // iterate through array of dictionaries, each student is a dictionary
         for result in results {
