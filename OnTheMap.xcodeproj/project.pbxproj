@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2889678920B3C6700003DBC5 /* StudentDataInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2889678820B3C6700003DBC5 /* StudentDataInfo.swift */; };
 		28D21A75208C1B4D00D3799E /* PostConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D21A74208C1B4D00D3799E /* PostConfirmationViewController.swift */; };
 		28F6B13D207DC7AB007716BC /* StudentMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F6B13C207DC7AB007716BC /* StudentMapViewController.swift */; };
 		7C28263F20878AA7004E37A7 /* PostLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C28263E20878AA7004E37A7 /* PostLocationViewController.swift */; };
@@ -26,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2889678820B3C6700003DBC5 /* StudentDataInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentDataInfo.swift; sourceTree = "<group>"; };
 		28D21A74208C1B4D00D3799E /* PostConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostConfirmationViewController.swift; sourceTree = "<group>"; };
 		28F6B13C207DC7AB007716BC /* StudentMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentMapViewController.swift; sourceTree = "<group>"; };
 		7C28263E20878AA7004E37A7 /* PostLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostLocationViewController.swift; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 		7CA95B1C206D32CA002FED84 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				2889678820B3C6700003DBC5 /* StudentDataInfo.swift */,
 				7CF01B8A2073101C00F267B8 /* Parse Client */,
 				7CF01B8D2073104100F267B8 /* Udacity Client */,
 			);
@@ -222,6 +225,7 @@
 				7CAD5EFB206DD96400A11B46 /* UdacityConstants.swift in Sources */,
 				7C6C8E2720B0E1470079AC44 /* LocationTextDelegate.swift in Sources */,
 				7CB7DEC9207ACBE900F42BA3 /* ParseConstants.swift in Sources */,
+				2889678920B3C6700003DBC5 /* StudentDataInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
