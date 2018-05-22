@@ -8,14 +8,16 @@
 
 import Foundation
 
-var students = [StudentInformation]()
+class StudentDataInfo: NSObject {
+    var students = [StudentInformation]()
 
 
-// MARK: Shared Instance
+    // MARK: Shared Instance
 
-func sharedInstance() -> UdacityClient {
-    struct Singleton {
-        static var sharedInstance = UdacityClient()
+    class func sharedInstance() -> StudentDataInfo {
+        struct Singleton {
+            static var sharedInstance = StudentDataInfo()
+        }
+        return Singleton.sharedInstance
     }
-    return Singleton.sharedInstance
 }
