@@ -35,10 +35,12 @@ class StudentTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.students = StudentDataInfo.sharedInstance().students
+//
+//        DispatchQueue.main.async {
+//            self.studentTableView.reloadData()
+//        }
         
-        DispatchQueue.main.async {
-            self.studentTableView.reloadData()
-        }
+        reloadStudentInfo()
         
 //        ParseClient.sharedInstance().getStudentInfo { (results, error) in
 //            if error != nil {
@@ -66,7 +68,6 @@ class StudentTableViewController: UITableViewController {
     }
     
     @IBAction func reloadStudentInfo() {
-        print("reload pressed in student table")
         
         let activityIndicator = UIViewController.activateSpinner(onView: self.tableView)
         
