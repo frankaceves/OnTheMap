@@ -9,9 +9,9 @@
 import UIKit
 
 class LocationTextDelegate: NSObject, UITextFieldDelegate {
-//    func textFieldDidBeginEditing(_ textField: UITextField) {
-//        textField.text = ""
-//    }
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.text = ""
+    }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
